@@ -28,9 +28,9 @@ namespace Borrowee.Data.Entities
         public DateTimeOffset LentOutDateUtc { get; set; }
 
         [Display(Name = "Date Returned")]
-        public DateTimeOffset ReturnDateUtc { get; set; }
+        public DateTimeOffset? ReturnDateUtc { get; set; }
 
         [Display(Name = "Is Returned")]
-        public bool IsReturned { get; set; }
+        public bool IsReturned { get; set; } = false;
     }
 }
