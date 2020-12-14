@@ -57,6 +57,10 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="ItemModels\ItemCreate.cs" />
+    <Compile Include="ItemModels\ItemDetail.cs" />
+    <Compile Include="ItemModels\ItemEdit.cs" />
+    <Compile Include="ItemModels\ItemListItem.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
