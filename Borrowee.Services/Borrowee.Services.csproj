@@ -64,6 +64,16 @@
     <None Include="App.config" />
     <None Include="packages.config" />
   </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Borrowee.Data\Borrowee.Data.csproj">
+      <Project>{85322f80-6a5c-48cd-b867-50157937f87e}</Project>
+      <Name>Borrowee.Data</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Borrowee.Models\Borrowee.Models.csproj">
+      <Project>{3ed769ff-1176-4184-9656-b947fed9f620}</Project>
+      <Name>Borrowee.Models</Name>
+    </ProjectReference>
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
     <PropertyGroup>
