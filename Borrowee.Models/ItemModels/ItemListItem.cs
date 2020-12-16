@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -14,8 +15,10 @@ namespace Borrowee.Models.ItemModels
 
         public string Description { get; set; }
 
+        [Display(Name = "Model Number")]
         public string ModelNumber { get; set; }
 
+        [Display(Name = "Serial Number")]
         public string SerialNumber { get; set; }
 
         public decimal Value { get; set; }
