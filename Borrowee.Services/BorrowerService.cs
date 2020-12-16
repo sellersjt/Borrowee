@@ -22,9 +22,9 @@ namespace Borrowee.Services
         public async Task<bool> CreateBorrower(BorrowerCreate model)
         {
             var entity =
-                new Item()
+                new Borrower()
                 {
-                    OwnerId = _userId
+                    OwnerId = _userId,
                     FirstName = model.FirstName,
                     LastName = model.LastName,
                     PhoneNumber = model.PhoneNumber,
@@ -48,7 +48,7 @@ namespace Borrowee.Services
                         .Where(b => b.OwnerId == _userId)
                         .Select(
                             b =>
-                                new ItemListItem
+                                new BorrowerListItem
                                 {
                                     Id = b.Id,
                                     FirstName = b.FirstName,
@@ -109,7 +109,7 @@ namespace Borrowee.Services
                     .Borrowers
                     .SingleAsync(b => b.Id == id && b.OwnerId == _userId);
 
-                ctx.Items.Remove(entity);
+                ctx.Borrowers.Remove(entity);
 
                 return await ctx.SaveChangesAsync() == 1;
             }

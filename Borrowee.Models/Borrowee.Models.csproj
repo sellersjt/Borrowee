@@ -57,6 +57,10 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="BorrowerModels\BorrowerCreate.cs" />
+    <Compile Include="BorrowerModels\BorrowerDetail.cs" />
+    <Compile Include="BorrowerModels\BorrowerEdit.cs" />
+    <Compile Include="BorrowerModels\BorrowerListItem.cs" />
     <Compile Include="ItemModels\ItemCreate.cs" />
     <Compile Include="ItemModels\ItemDetail.cs" />
     <Compile Include="ItemModels\ItemEdit.cs" />
