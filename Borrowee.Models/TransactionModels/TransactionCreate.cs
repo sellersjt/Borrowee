@@ -1,29 +1,19 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.ComponentModel;
 using System.ComponentModel.DataAnnotations;
-using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Borrowee.Data.Entities
+namespace Borrowee.Models.TransactionModels
 {
-    public class Transaction
+    public class TransactionCreate
     {
-        [Key]
-        public int Id { get; set; }
-
-        [Required]
-        public Guid OwnerId { get; set; }
-
-        [ForeignKey(nameof(Item))]
+        [Display(Name = "Item Id")]
         public int ItemId { get; set; }
-        public virtual Item Item { get; set; }
 
-        [ForeignKey(nameof(Borrower))]
+        [Display(Name = "Borrower Id")]
         public int BorrowerId { get; set; }
-        public virtual Borrower Borrower { get; set; }
 
         [Display(Name = "Date Lent Out")]
         public DateTimeOffset LentOutDateUtc { get; set; }
@@ -31,7 +21,6 @@ namespace Borrowee.Data.Entities
         [Display(Name = "Date Returned")]
         public DateTimeOffset? ReturnDateUtc { get; set; }
 
-        [DefaultValue(false)]
         [Display(Name = "Is Returned")]
         public bool IsReturned { get; set; } = false;
     }

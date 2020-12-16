@@ -66,11 +66,16 @@
     <Compile Include="ItemModels\ItemEdit.cs" />
     <Compile Include="ItemModels\ItemListItem.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="TransactionModels\TransactionCreate.cs" />
+    <Compile Include="TransactionModels\TransactionDetail.cs" />
+    <Compile Include="TransactionModels\TransactionEdit.cs" />
+    <Compile Include="TransactionModels\TransactionListItem.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
     <None Include="packages.config" />
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
     <PropertyGroup>
