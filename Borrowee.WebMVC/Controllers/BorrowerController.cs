@@ -1,4 +1,4 @@
-﻿using Borrowee.Models.ItemModels;
+﻿using Borrowee.Models.BorrowerModels;
 using Borrowee.Services;
 using Microsoft.AspNet.Identity;
 using System;
@@ -11,52 +11,52 @@ using System.Web.Mvc;
 namespace Borrowee.WebMVC.Controllers
 {
     [Authorize]
-    public class ItemController : Controller
+    public class BorrowerController : Controller
     {
-        // GET: Items
+        // GET: Borrower
         public async Task<ActionResult> Index()
         {
-            var service = CreateItemService();
-            var model = await service.GetItems();
+            var service = CreateBorrowerService();
+            var model = await service.GetBorrowers();
 
             return View(model);
         }
 
         // GET: Create
-        public  ActionResult Create()
+        public ActionResult Create()
         {
-            return View(new ItemCreate());
+            return View(new BorrowerCreate());
         }
 
         // POST: Create
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<ActionResult> Create(ItemCreate model)
+        public async Task<ActionResult> Create(BorrowerCreate model)
         {
             if (ModelState.IsValid == false)
             {
                 return View(model);
             }
 
-            var service = CreateItemService();
+            var service = CreateBorrowerService();
 
-            if (await service.CreateItem(model))
+            if (await service.CreateBorrower(model))
             {
-                TempData["SaveResult"] = "Your item was created.";
+                TempData["SaveResult"] = "Your borrower was created.";
                 return RedirectToAction("Index");
             }
 
-            ModelState.AddModelError("", "Item could not be created");
+            ModelState.AddModelError("", "Borrower could not be created");
 
             return View(model);
         }
 
         // GET: Details
-        // Item/Details/{id}
+        // Borrower/Details/{id}
         public async Task<ActionResult> Details(int id)
         {
-            var service = CreateItemService();
-            var model = await service.GetItemById(id);
+            var service = CreateBorrowerService();
+            var model = await service.GetBorrowerById(id);
 
             return View(model);
         }
@@ -64,28 +64,27 @@ namespace Borrowee.WebMVC.Controllers
         // GET: Edit
         public async Task<ActionResult> Edit(int id)
         {
-            var service = CreateItemService();
-            var detail = await service.GetItemById(id);
+            var service = CreateBorrowerService();
+            var detail = await service.GetBorrowerById(id);
 
             var model =
-                new ItemEdit
+                new BorrowerEdit
                 {
                     Id = detail.Id,
-                    Name = detail.Name,
-                    Description = detail.Description,
-                    ModelNumber = detail.ModelNumber,
-                    SerialNumber = detail.SerialNumber,
-                    Value = detail.Value
+                    FirstName = detail.FirstName,
+                    LastName = detail.LastName,
+                    PhoneNumber = detail.PhoneNumber,
+                    EmailAddress = detail.EmailAddress
                 };
 
             return View(model);
         }
 
         // POST: EDIT
-        // Item/Edit/{id}
+        // Borrower/Edit/{id}
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<ActionResult> Edit(int id, ItemEdit model)
+        public async Task<ActionResult> Edit(int id, BorrowerEdit model)
         {
             if (ModelState.IsValid == false)
             {
@@ -98,35 +97,35 @@ namespace Borrowee.WebMVC.Controllers
                 return View(model);
             }
 
-            var service = CreateItemService();
+            var service = CreateBorrowerService();
 
-            if (await service.UpdateItem(model))
+            if (await service.UpdateBorrower(model))
             {
-                TempData["SaveResult"] = "Your item was updated.";
+                TempData["SaveResult"] = "Your borrower was updated.";
                 return RedirectToAction("Index");
             }
 
-            ModelState.AddModelError("", "Your item could not be updated.");
+            ModelState.AddModelError("", "Your borrower could not be updated.");
             return View(model);
         }
 
         // GET: Delete
-        // Item/Delete/{id}
+        // Borrower/Delete/{id}
         [ActionName("Delete")]
         public async Task<ActionResult> Delete(int id)
         {
-            var service = CreateItemService();
-            var model = await service.GetItemById(id);
+            var service = CreateBorrowerService();
+            var model = await service.GetBorrowerById(id);
 
             return View(model);
         }
 
         // POST: Delete
-        // Item/Delete/{id}
+        // Borrower/Delete/{id}
         [HttpPost]
         [ActionName("Delete")]
         [ValidateAntiForgeryToken]
-        public async Task<ActionResult> DeleteItem(int id, ItemDetail model)
+        public async Task<ActionResult> DeleteItem(int id, BorrowerDetail model)
         {
             if (model.Id != id)
             {
@@ -134,19 +133,19 @@ namespace Borrowee.WebMVC.Controllers
                 return View(model);
             }
 
-            var service = CreateItemService();
+            var service = CreateBorrowerService();
 
-            await service.DeleteItem(id);
+            await service.DeleteBorrower(id);
 
-            TempData["SaveResult"] = "Your item was deleted.";
+            TempData["SaveResult"] = "Your borrower was deleted.";
 
             return RedirectToAction("Index");
         }
 
-        private ItemService CreateItemService()
+        private BorrowerService CreateBorrowerService()
         {
             var userId = Guid.Parse(User.Identity.GetUserId());
-            var service = new ItemService(userId);
+            var service = new BorrowerService(userId);
             return service;
         }
     }

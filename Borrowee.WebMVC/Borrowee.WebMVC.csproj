@@ -173,6 +173,7 @@
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\Startup.Auth.cs" />
     <Compile Include="Controllers\AccountController.cs" />
+    <Compile Include="Controllers\BorrowerController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ItemController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
@@ -350,6 +351,11 @@
     <Content Include="Views\Item\Details.cshtml" />
     <Content Include="Views\Item\Edit.cshtml" />
     <Content Include="Views\Item\Delete.cshtml" />
+    <Content Include="Views\Borrower\Index.cshtml" />
+    <Content Include="Views\Borrower\Create.cshtml" />
+    <Content Include="Views\Borrower\Details.cshtml" />
+    <Content Include="Views\Borrower\Edit.cshtml" />
+    <Content Include="Views\Borrower\Delete.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
