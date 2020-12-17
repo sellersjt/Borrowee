@@ -13,7 +13,7 @@ namespace Borrowee.WebMVC.Controllers
     [Authorize]
     public class BorrowerController : Controller
     {
-        // GET: Borrower
+        // GET: Borrowers
         public async Task<ActionResult> Index()
         {
             var service = CreateBorrowerService();
