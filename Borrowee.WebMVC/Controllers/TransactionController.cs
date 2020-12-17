@@ -44,6 +44,8 @@ namespace Borrowee.WebMVC.Controllers
                 Value = b.Id.ToString()
             });
 
+            viewModel.LentOutDateUtc = DateTime.Now;
+
             return View(viewModel);
         }
 
