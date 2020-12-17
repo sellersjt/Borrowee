@@ -60,6 +60,7 @@
     <Compile Include="BorrowerService.cs" />
     <Compile Include="ItemService.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="TransactionService.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />

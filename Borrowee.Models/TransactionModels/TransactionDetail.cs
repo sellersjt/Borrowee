@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Borrowee.Data.Entities;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.Linq;
@@ -11,11 +12,9 @@ namespace Borrowee.Models.TransactionModels
     {
         public int Id { get; set; }
 
-        [Display(Name = "Item Id")]
-        public int ItemId { get; set; }
+        public Item Item { get; set; }
 
-        [Display(Name = "Borrower Id")]
-        public int BorrowerId { get; set; }
+        public Borrower Borrower { get; set; }
 
         [Display(Name = "Date Lent Out")]
         public DateTimeOffset LentOutDateUtc { get; set; }
