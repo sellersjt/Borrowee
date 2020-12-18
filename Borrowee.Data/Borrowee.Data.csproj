@@ -59,6 +59,7 @@
   <ItemGroup>
     <Compile Include="Entities\Borrower.cs" />
     <Compile Include="Entities\Item.cs" />
+    <Compile Include="Entities\ItemImage.cs" />
     <Compile Include="Entities\Transaction.cs" />
     <Compile Include="IdentityModels.cs" />
     <Compile Include="Migrations\202012130156248_InitialCreate.cs" />
@@ -68,6 +69,10 @@
     <Compile Include="Migrations\202012130200358_TransactionTweek.cs" />
     <Compile Include="Migrations\202012130200358_TransactionTweek.designer.cs">
       <DependentUpon>202012130200358_TransactionTweek.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202012180201187_AddItemImage.cs" />
+    <Compile Include="Migrations\202012180201187_AddItemImage.designer.cs">
+      <DependentUpon>202012180201187_AddItemImage.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -82,6 +87,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\202012130200358_TransactionTweek.resx">
       <DependentUpon>202012130200358_TransactionTweek.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202012180201187_AddItemImage.resx">
+      <DependentUpon>202012180201187_AddItemImage.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
