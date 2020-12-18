@@ -191,7 +191,7 @@ namespace Borrowee.WebMVC.Controllers
         [AllowAnonymous]
         public ActionResult ForgotPassword()
         {
-            return View();
+            return View(new ForgotPasswordViewModel());
         }
 
         //
