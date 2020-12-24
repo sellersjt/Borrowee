@@ -8,16 +8,18 @@ using System.Threading.Tasks;
 
 namespace Borrowee.Data.Entities
 {
-    public class ItemImage
+    public class ItemImageMapping
     {
-        public int Id { get; set; }
+        [Key]
+        public int ID { get; set; }
+
         public Guid OwnerId { get; set; }
 
-        [Display(Name = "File")]
-        [StringLength(100)]
-        [Index(IsUnique = true)]
-        public string FileName { get; set; }
+        public int ItemId { get; set; }
+        public virtual Item Item { get; set; }
 
-        public virtual ICollection<ItemImageMapping> ItemImageMappings { get; set; }
+        public int ItemImageId { get; set; }
+
+        public virtual ItemImage ItemImage { get; set; }
     }
 }

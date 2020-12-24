@@ -25,5 +25,7 @@ namespace Borrowee.Data.Entities
         public string SerialNumber { get; set; }
 
         public decimal Value { get; set; }
+
+        public virtual ICollection<ItemImageMapping> ItemImageMappings { get; set; }
     }
 }

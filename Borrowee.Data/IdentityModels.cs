@@ -37,6 +37,7 @@ namespace Borrowee.Data
         public DbSet<Borrower> Borrowers { get; set; }
         public DbSet<Transaction> Transactions { get; set; }
         public DbSet<ItemImage> ItemImages { get; set; }
+        public DbSet<ItemImageMapping> ItemImageMappings { get; set; }
 
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {

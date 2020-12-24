@@ -60,6 +60,7 @@
     <Compile Include="Entities\Borrower.cs" />
     <Compile Include="Entities\Item.cs" />
     <Compile Include="Entities\ItemImage.cs" />
+    <Compile Include="Entities\ItemImageMapping.cs" />
     <Compile Include="Entities\Transaction.cs" />
     <Compile Include="IdentityModels.cs" />
     <Compile Include="Migrations\202012130156248_InitialCreate.cs" />
@@ -77,6 +78,10 @@
     <Compile Include="Migrations\202012200235359_UniqueFileName.cs" />
     <Compile Include="Migrations\202012200235359_UniqueFileName.designer.cs">
       <DependentUpon>202012200235359_UniqueFileName.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202012242054125_CreateProductImageMappings.cs" />
+    <Compile Include="Migrations\202012242054125_CreateProductImageMappings.designer.cs">
+      <DependentUpon>202012242054125_CreateProductImageMappings.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -97,6 +102,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\202012200235359_UniqueFileName.resx">
       <DependentUpon>202012200235359_UniqueFileName.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202012242054125_CreateProductImageMappings.resx">
+      <DependentUpon>202012242054125_CreateProductImageMappings.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
