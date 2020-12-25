@@ -22,6 +22,9 @@
 <table class="table">
     <tr>
         <th>
+            Image
+        </th>
+        <th>
             @Html.DisplayNameFor(model => model.Name)
         </th>
         <th>
@@ -42,6 +45,12 @@
     @foreach (var item in Model)
     {
         <tr>
+            <td>
+                @if (item.ItemImageMappings.Count != 0 )
+                {
+                    <img src="@(Url.Content(Constants.ItemThumbnailPath) + @Html.DisplayFor(modelItem => item.ItemImageMappings.OrderBy(i => i.ItemId).ElementAt(0).ItemImage.FileName))" />
+                }
+            </td>
             <td>
                 @Html.DisplayFor(modelItem => item.Name)
             </td>

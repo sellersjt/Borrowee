@@ -29,13 +29,20 @@ namespace Borrowee.Services
                     Description = model.Description,
                     ModelNumber = model.ModelNumber,
                     SerialNumber = model.SerialNumber,
-                    Value = model.Value
+                    Value = model.Value,
+                    ItemImageMappings = new List<ItemImageMapping>()
                 };
+            entity.ItemImageMappings.Add(new ItemImageMapping
+            {
+                OwnerId = _userId,
+                ItemImageId = model.ItemImageId
+            });
+
 
             using (var ctx = new ApplicationDbContext())
             {
                 ctx.Items.Add(entity);
-                return await ctx.SaveChangesAsync() == 1;
+                return await ctx.SaveChangesAsync() == 2;
             }
         }
 
@@ -56,7 +63,8 @@ namespace Borrowee.Services
                                     Description = i.Description,
                                     ModelNumber = i.ModelNumber,
                                     SerialNumber = i.SerialNumber,
-                                    Value = i.Value
+                                    Value = i.Value,
+                                    ItemImageMappings = i.ItemImageMappings
                                 });
 
                 return await query.ToArrayAsync();
