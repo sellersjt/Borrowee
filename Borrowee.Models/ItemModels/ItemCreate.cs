@@ -1,5 +1,4 @@
-﻿using Borrowee.Data.Entities;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.Linq;
@@ -23,8 +22,6 @@ namespace Borrowee.Models.ItemModels
 
         public decimal Value { get; set; }
 
-        public int ItemImageId { get; set; }
-
-        public virtual ICollection<ItemImageMapping> ItemImageMappings { get; set; }
+        public int? ItemImageId { get; set; }
     }
 }

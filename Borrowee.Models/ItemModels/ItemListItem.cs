@@ -24,6 +24,7 @@ namespace Borrowee.Models.ItemModels
 
         public decimal Value { get; set; }
 
-        public virtual ICollection<ItemImageMapping> ItemImageMappings { get; set; }
+        [Display(Name = "Item Image")]
+        public virtual ItemImage ItemImage { get; set; }
     }
 }

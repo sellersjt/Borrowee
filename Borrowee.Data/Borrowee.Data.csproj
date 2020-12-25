@@ -60,7 +60,6 @@
     <Compile Include="Entities\Borrower.cs" />
     <Compile Include="Entities\Item.cs" />
     <Compile Include="Entities\ItemImage.cs" />
-    <Compile Include="Entities\ItemImageMapping.cs" />
     <Compile Include="Entities\Transaction.cs" />
     <Compile Include="IdentityModels.cs" />
     <Compile Include="Migrations\202012130156248_InitialCreate.cs" />

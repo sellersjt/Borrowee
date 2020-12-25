@@ -82,11 +82,11 @@
     <Compile Include="BorrowerModels\BorrowerDetail.cs" />
     <Compile Include="BorrowerModels\BorrowerEdit.cs" />
     <Compile Include="BorrowerModels\BorrowerListItem.cs" />
-    <Compile Include="ItemImageMappingModels\ItemImageMappingCreate.cs" />
     <Compile Include="ItemImageModels\ItemImageCreate.cs" />
     <Compile Include="ItemImageModels\ItemImageDetail.cs" />
     <Compile Include="ItemImageModels\ItemImageListItem.cs" />
     <Compile Include="ItemModels\CreateItemViewModel.cs" />
+    <Compile Include="ItemModels\EditItemViewModel.cs" />
     <Compile Include="ItemModels\ItemCreate.cs" />
     <Compile Include="ItemModels\ItemDetail.cs" />
     <Compile Include="ItemModels\ItemEdit.cs" />
