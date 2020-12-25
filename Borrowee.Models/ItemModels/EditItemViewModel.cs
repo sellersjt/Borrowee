@@ -8,8 +8,10 @@ using System.Web.Mvc;
 
 namespace Borrowee.Models.ItemModels
 {
-    public class CreateItemViewModel
+    public class EditItemViewModel
     {
+        public int Id { get; set; }
+
         [Required]
         public string Name { get; set; }
 
