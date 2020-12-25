@@ -78,6 +78,10 @@
     <Compile Include="Migrations\202012200235359_UniqueFileName.designer.cs">
       <DependentUpon>202012200235359_UniqueFileName.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\202012250218527_BackOutImageMapping.cs" />
+    <Compile Include="Migrations\202012250218527_BackOutImageMapping.designer.cs">
+      <DependentUpon>202012250218527_BackOutImageMapping.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
@@ -97,6 +101,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\202012200235359_UniqueFileName.resx">
       <DependentUpon>202012200235359_UniqueFileName.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202012250218527_BackOutImageMapping.resx">
+      <DependentUpon>202012250218527_BackOutImageMapping.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
