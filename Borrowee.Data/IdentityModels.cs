@@ -38,6 +38,7 @@ namespace Borrowee.Data
         public DbSet<Transaction> Transactions { get; set; }
         public DbSet<ItemImage> ItemImages { get; set; }
 
+
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
             modelBuilder
