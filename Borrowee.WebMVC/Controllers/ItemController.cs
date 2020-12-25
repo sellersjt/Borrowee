@@ -27,11 +27,11 @@ namespace Borrowee.WebMVC.Controllers
         public async Task<ActionResult> Create()
         {
             var itemImageService = CreateItemImageService();
-            var images = await itemImageService.GetItemImages();
+            var itemImages = await itemImageService.GetItemImages();
 
             var viewModel = new CreateItemViewModel();
 
-            viewModel.Images = images.OrderBy(n => n.FileName).Select(i => new SelectListItem
+            viewModel.Images = itemImages.OrderBy(f => f.FileName).Select(i => new SelectListItem
             {
                 Text = i.FileName,
                 Value = i.Id.ToString()
@@ -98,28 +98,18 @@ namespace Borrowee.WebMVC.Controllers
             var itemService = CreateItemService();
             var detail = await itemService.GetItemById(id);
 
-            var itemImageService = CreateItemImageService();
-            var images = await itemImageService.GetItemImages();
-
-            var viewModel =
-                new EditItemViewModel
+            var model =
+                new ItemEdit
                 {
                     Id = detail.Id,
                     Name = detail.Name,
                     Description = detail.Description,
                     ModelNumber = detail.ModelNumber,
                     SerialNumber = detail.SerialNumber,
-                    Value = detail.Value,
-                    ItemImageId = detail.ItemImageId
+                    Value = detail.Value
                 };
 
-            viewModel.Images = images.OrderBy(n => n.FileName).Select(i => new SelectListItem
-            {
-                Text = i.FileName,
-                Value = i.Id.ToString()
-            });
-
-            return View(viewModel);
+            return View(model);
         }
 
         // POST: EDIT
