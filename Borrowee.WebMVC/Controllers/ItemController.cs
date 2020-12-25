@@ -90,7 +90,7 @@ namespace Borrowee.WebMVC.Controllers
                     ModelNumber = detail.ModelNumber,
                     SerialNumber = detail.SerialNumber,
                     Value = detail.Value,
-                    ItemImageId = detail.ItemImage.Id
+                    ItemImageId = detail.ItemImageId
                 };
 
             viewModel.Images = images.OrderBy(n => n.FileName).Select(i => new SelectListItem

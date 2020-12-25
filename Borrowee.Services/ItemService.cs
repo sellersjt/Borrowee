@@ -83,6 +83,7 @@ namespace Borrowee.Services
                         ModelNumber = entity.ModelNumber,
                         SerialNumber = entity.SerialNumber,
                         Value = entity.Value,
+                        ItemImageId = entity.ItemImageId,
                         ItemImage = entity.ItemImage
                     };
             }
