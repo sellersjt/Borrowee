@@ -1,17 +1,16 @@
-﻿using Borrowee.Data.Entities;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Web.Mvc;
 
 namespace Borrowee.Models.ItemModels
 {
-    public class ItemListItem
+    public class CreateItemViewModel
     {
-        public int Id { get; set; }
-
+        [Required]
         public string Name { get; set; }
 
         public string Description { get; set; }
@@ -24,7 +23,8 @@ namespace Borrowee.Models.ItemModels
 
         public decimal Value { get; set; }
 
-        [Display(Name = "Item Image")]
-        public virtual ItemImage ItemImage { get; set; }
+        public int? ItemImageId { get; set; }
+
+        public IEnumerable<SelectListItem> Images { get; set; }
     }
 }

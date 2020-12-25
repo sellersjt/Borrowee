@@ -50,6 +50,17 @@
             @Html.DisplayFor(model => model.Value)
         </dd>
 
+        <dt>
+            @Html.DisplayNameFor(model => model.ItemImage)
+        </dt>
+
+        <dd>
+            @if (Model.ItemImage != null)
+            {
+                <img src="@(Url.Content(Constants.ItemImagePath) + @Html.DisplayFor(modelItem => Model.ItemImage.FileName))" />
+            }
+        </dd>
+
     </dl>
 
     @using (Html.BeginForm()) {

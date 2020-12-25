@@ -21,5 +21,7 @@ namespace Borrowee.Models.ItemModels
         public string SerialNumber { get; set; }
 
         public decimal Value { get; set; }
+
+        public int? ItemImageId { get; set; }
     }
 }

@@ -23,9 +23,20 @@ namespace Borrowee.WebMVC.Controllers
         }
 
         // GET: Create
-        public  ActionResult Create()
+        public async Task<ActionResult> Create()
         {
-            return View(new ItemCreate());
+            var itemImageService = CreateItemImageService();
+            var images = await itemImageService.GetItemImages();
+
+            var viewModel = new CreateItemViewModel();
+
+            viewModel.Images = images.OrderBy(n => n.FileName).Select(i => new SelectListItem
+            {
+                Text = i.FileName,
+                Value = i.Id.ToString()
+            });
+
+            return View(viewModel);
         }
 
         // POST: Create
@@ -67,18 +78,28 @@ namespace Borrowee.WebMVC.Controllers
             var service = CreateItemService();
             var detail = await service.GetItemById(id);
 
-            var model =
-                new ItemEdit
+            var itemImageService = CreateItemImageService();
+            var images = await itemImageService.GetItemImages();
+
+            var viewModel =
+                new EditItemViewModel
                 {
                     Id = detail.Id,
                     Name = detail.Name,
                     Description = detail.Description,
                     ModelNumber = detail.ModelNumber,
                     SerialNumber = detail.SerialNumber,
-                    Value = detail.Value
+                    Value = detail.Value,
+                    ItemImageId = detail.ItemImage.Id
                 };
 
-            return View(model);
+            viewModel.Images = images.OrderBy(n => n.FileName).Select(i => new SelectListItem
+            {
+                Text = i.FileName,
+                Value = i.Id.ToString()
+            });
+
+            return View(viewModel);
         }
 
         // POST: EDIT
@@ -147,6 +168,13 @@ namespace Borrowee.WebMVC.Controllers
         {
             var userId = Guid.Parse(User.Identity.GetUserId());
             var service = new ItemService(userId);
+            return service;
+        }
+
+        private ItemImageService CreateItemImageService()
+        {
+            var userId = Guid.Parse(User.Identity.GetUserId());
+            var service = new ItemImageService(userId);
             return service;
         }
     }
