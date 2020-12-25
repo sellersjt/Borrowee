@@ -1,5 +1,4 @@
-﻿using Borrowee.Data.Entities;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.Linq;
@@ -23,10 +22,5 @@ namespace Borrowee.Models.ItemModels
         public string SerialNumber { get; set; }
 
         public decimal Value { get; set; }
-
-        public int? ItemImageId { get; set; }
-
-        [Display(Name = "Item Image")]
-        public virtual ItemImage ItemImage { get; set; }
     }
 }

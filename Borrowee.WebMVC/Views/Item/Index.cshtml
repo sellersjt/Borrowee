@@ -22,7 +22,7 @@
 <table class="table">
     <tr>
         <th>
-            @Html.DisplayNameFor(model => model.ItemImage)
+            Image
         </th>
         <th>
             @Html.DisplayNameFor(model => model.Name)
@@ -46,9 +46,9 @@
     {
         <tr>
             <td>
-                @if (item.ItemImage != null)
+                @if (item.ItemImageMappings.Count != 0 )
                 {
-                    <img src="@(Url.Content(Constants.ItemThumbnailPath) + @Html.DisplayFor(modelItem => item.ItemImage.FileName))" />
+                    <img src="@(Url.Content(Constants.ItemThumbnailPath) + @Html.DisplayFor(modelItem => item.ItemImageMappings.OrderBy(i => i.ItemId).ElementAt(0).ItemImage.FileName))" />
                 }
             </td>
             <td>

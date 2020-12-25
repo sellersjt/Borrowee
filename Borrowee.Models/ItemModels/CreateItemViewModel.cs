@@ -23,7 +23,7 @@ namespace Borrowee.Models.ItemModels
 
         public decimal Value { get; set; }
 
-        public int? ItemImageId { get; set; }
+        public int ItemImageId { get; set; }
 
         public IEnumerable<SelectListItem> Images { get; set; }
     }
