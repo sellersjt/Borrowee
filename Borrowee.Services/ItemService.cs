@@ -32,11 +32,17 @@ namespace Borrowee.Services
                     Value = model.Value,
                     ItemImageId = model.ItemImageId
                 };
+            entity.ItemImageMappings.Add(new ItemImageMapping
+            {
+                OwnerId = _userId,
+                ItemImageId = model.ItemImageId
+            });
+
 
             using (var ctx = new ApplicationDbContext())
             {
                 ctx.Items.Add(entity);
-                return await ctx.SaveChangesAsync() == 1;
+                return await ctx.SaveChangesAsync() == 2;
             }
         }
 
