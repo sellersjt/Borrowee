@@ -39,6 +39,7 @@ namespace Borrowee.Data
         public DbSet<ItemImage> ItemImages { get; set; }
         public DbSet<ItemImageMapping> ItemImageMappings { get; set; }
 
+
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
             modelBuilder
