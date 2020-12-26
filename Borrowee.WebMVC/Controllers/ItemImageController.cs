@@ -116,24 +116,39 @@ namespace Borrowee.WebMVC.Controllers
                 return View(model);
             }
 
-            // to-do: check if file is used, if not then delete
+            // check if file is used, if not then delete
+            var itemService = CreateItemService();
+            var items = await itemService.GetItemsByImageId(id);
 
-            var service = CreateItemImageService();
+            if (items.Count() == 0)
+            {
+                var service = CreateItemImageService();
 
-            await service.DeleteItemImage(id);
+                await service.DeleteItemImage(id);
 
-            System.IO.File.Delete(Request.MapPath(Constants.ItemImagePath + model.FileName));
-            System.IO.File.Delete(Request.MapPath(Constants.ItemThumbnailPath + model.FileName));
+                System.IO.File.Delete(Request.MapPath(Constants.ItemImagePath + model.FileName));
+                System.IO.File.Delete(Request.MapPath(Constants.ItemThumbnailPath + model.FileName));
 
-            TempData["SaveResult"] = "Your item image was deleted.";
+                TempData["SaveResult"] = "Your item image was deleted.";
 
-            return RedirectToAction("Index");
+                return RedirectToAction("Index"); 
+            }
+
+            ModelState.AddModelError("", "The image is in use and can not be deleted.");
+            return View(model);
         }
 
         private ItemImageService CreateItemImageService()
         {
             var userId = Guid.Parse(User.Identity.GetUserId());
             var service = new ItemImageService(userId);
+            return service;
+        }
+
+        private ItemService CreateItemService()
+        {
+            var userId = Guid.Parse(User.Identity.GetUserId());
+            var service = new ItemService(userId);
             return service;
         }
 

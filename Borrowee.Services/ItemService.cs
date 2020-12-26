@@ -123,5 +123,30 @@ namespace Borrowee.Services
                 return await ctx.SaveChangesAsync() == 1;
             }
         }
+
+        public async Task<IEnumerable<ItemListItem>> GetItemsByImageId(int id)
+        {
+            using (var ctx = new ApplicationDbContext())
+            {
+                var query =
+                     ctx
+                        .Items
+                        .Where(i => i.ItemImageId == id && i.OwnerId == _userId)
+                        .Select(
+                            i =>
+                                new ItemListItem
+                                {
+                                    Id = i.Id,
+                                    Name = i.Name,
+                                    Description = i.Description,
+                                    ModelNumber = i.ModelNumber,
+                                    SerialNumber = i.SerialNumber,
+                                    Value = i.Value,
+                                    ItemImage = i.ItemImage
+                                });
+
+                return await query.ToArrayAsync();
+            }
+        }
     }
 }
