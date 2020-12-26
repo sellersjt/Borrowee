@@ -116,9 +116,14 @@ namespace Borrowee.WebMVC.Controllers
                 return View(model);
             }
 
+            // to-do: check if file is used, if not then delete
+
             var service = CreateItemImageService();
 
             await service.DeleteItemImage(id);
+
+            System.IO.File.Delete(Request.MapPath(Constants.ItemImagePath + model.FileName));
+            System.IO.File.Delete(Request.MapPath(Constants.ItemThumbnailPath + model.FileName));
 
             TempData["SaveResult"] = "Your item image was deleted.";
 
