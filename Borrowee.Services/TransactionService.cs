@@ -118,5 +118,29 @@ namespace Borrowee.Services
                 return await ctx.SaveChangesAsync() == 1;
             }
         }
+
+        public async Task<IEnumerable<TransactionListItem>> GetItemsOnLoan()
+        {
+            using (var ctx = new ApplicationDbContext())
+            {
+                var query =
+                     ctx
+                        .Transactions
+                        .Where(t => t.IsReturned == false && t.OwnerId == _userId)
+                        .Select(
+                            t =>
+                                new TransactionListItem
+                                {
+                                    Id = t.Id,
+                                    Item = t.Item,
+                                    Borrower = t.Borrower,
+                                    LentOutDateUtc = t.LentOutDateUtc,
+                                    ReturnDateUtc = t.ReturnDateUtc,
+                                    IsReturned = t.IsReturned
+                                });
+
+                return await query.ToArrayAsync();
+            }
+        }
     }
 }

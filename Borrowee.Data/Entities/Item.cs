@@ -16,6 +16,7 @@ namespace Borrowee.Data.Entities
         public Guid OwnerId { get; set; }
 
         [Required]
+        [Display(Name = "Item Name")]
         public string Name { get; set; }
 
         public string Description { get; set; }

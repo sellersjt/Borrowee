@@ -4,6 +4,8 @@
 
 @if (User.Identity.IsAuthenticated)
 {
+    <h1>Welcome!</h1>
+    @Html.ActionLink("Items On Loan", "ItemsOnLoan", "Transaction")
 }
 else
 {

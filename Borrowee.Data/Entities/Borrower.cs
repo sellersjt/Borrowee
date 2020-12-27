@@ -16,9 +16,11 @@ namespace Borrowee.Data.Entities
         public Guid OwnerId { get; set; }
 
         [Required]
+        [Display(Name = "First Name")]
         public string FirstName { get; set; }
 
         [Required]
+        [Display(Name = "Last Name")]
         public string LastName { get; set; }
 
         [Phone]
