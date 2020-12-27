@@ -17,8 +17,8 @@ namespace Borrowee.WebMVC.Controllers
         // GET: ItemImages
         public async Task<ActionResult> Index()
         {
-            var service = CreateItemImageService();
-            var model = await service.GetItemImages();
+            var itemImageService = CreateItemImageService();
+            var model = await itemImageService.GetItemImages();
 
             return View(model);
         }
@@ -66,9 +66,9 @@ namespace Borrowee.WebMVC.Controllers
                     FileName = file.FileName
                 };
 
-                var service = CreateItemImageService();
+                var itemImageService = CreateItemImageService();
 
-                string responce = await service.CreateItemImage(model);
+                string responce = await itemImageService.CreateItemImage(model);
 
                 if (responce == "success")
                 {
@@ -86,8 +86,8 @@ namespace Borrowee.WebMVC.Controllers
         // ItemImage/Details/{id}
         public async Task<ActionResult> Details(int id)
         {
-            var service = CreateItemImageService();
-            var model = await service.GetItemImageById(id);
+            var itemImageService = CreateItemImageService();
+            var model = await itemImageService.GetItemImageById(id);
 
             return View(model);
         }
@@ -97,8 +97,8 @@ namespace Borrowee.WebMVC.Controllers
         [ActionName("Delete")]
         public async Task<ActionResult> Delete(int id)
         {
-            var service = CreateItemImageService();
-            var model = await service.GetItemImageById(id);
+            var itemImageService = CreateItemImageService();
+            var model = await itemImageService.GetItemImageById(id);
 
             return View(model);
         }
@@ -122,9 +122,9 @@ namespace Borrowee.WebMVC.Controllers
 
             if (items.Count() == 0)
             {
-                var service = CreateItemImageService();
+                var itemImageService = CreateItemImageService();
 
-                await service.DeleteItemImage(id);
+                await itemImageService.DeleteItemImage(id);
 
                 System.IO.File.Delete(Request.MapPath(Constants.ItemImagePath + model.FileName));
                 System.IO.File.Delete(Request.MapPath(Constants.ItemThumbnailPath + model.FileName));

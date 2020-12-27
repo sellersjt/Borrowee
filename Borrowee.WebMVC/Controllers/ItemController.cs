@@ -16,8 +16,8 @@ namespace Borrowee.WebMVC.Controllers
         // GET: Items
         public async Task<ActionResult> Index()
         {
-            var service = CreateItemService();
-            var model = await service.GetItems();
+            var itemService = CreateItemService();
+            var model = await itemService.GetItems();
 
             return View(model);
         }
@@ -49,9 +49,9 @@ namespace Borrowee.WebMVC.Controllers
                 return View(model);
             }
 
-            var service = CreateItemService();
+            var itemService = CreateItemService();
 
-            if (await service.CreateItem(model))
+            if (await itemService.CreateItem(model))
             {
                 TempData["SaveResult"] = "Your item was created.";
                 return RedirectToAction("Index");
@@ -66,8 +66,8 @@ namespace Borrowee.WebMVC.Controllers
         // Item/Details/{id}
         public async Task<ActionResult> Details(int id)
         {
-            var service = CreateItemService();
-            var model = await service.GetItemById(id);
+            var itemService = CreateItemService();
+            var model = await itemService.GetItemById(id);
 
             return View(model);
         }
@@ -75,8 +75,8 @@ namespace Borrowee.WebMVC.Controllers
         // GET: Edit
         public async Task<ActionResult> Edit(int id)
         {
-            var service = CreateItemService();
-            var detail = await service.GetItemById(id);
+            var itemService = CreateItemService();
+            var detail = await itemService.GetItemById(id);
 
             var itemImageService = CreateItemImageService();
             var images = await itemImageService.GetItemImages();
@@ -119,9 +119,9 @@ namespace Borrowee.WebMVC.Controllers
                 return View(model);
             }
 
-            var service = CreateItemService();
+            var itemService = CreateItemService();
 
-            if (await service.UpdateItem(model))
+            if (await itemService.UpdateItem(model))
             {
                 TempData["SaveResult"] = "Your item was updated.";
                 return RedirectToAction("Index");
@@ -136,8 +136,8 @@ namespace Borrowee.WebMVC.Controllers
         [ActionName("Delete")]
         public async Task<ActionResult> Delete(int id)
         {
-            var service = CreateItemService();
-            var model = await service.GetItemById(id);
+            var itemService = CreateItemService();
+            var model = await itemService.GetItemById(id);
 
             return View(model);
         }
@@ -155,9 +155,9 @@ namespace Borrowee.WebMVC.Controllers
                 return View(model);
             }
 
-            var service = CreateItemService();
+            var itemService = CreateItemService();
 
-            await service.DeleteItem(id);
+            await itemService.DeleteItem(id);
 
             TempData["SaveResult"] = "Your item was deleted.";
 

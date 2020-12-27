@@ -16,8 +16,8 @@ namespace Borrowee.WebMVC.Controllers
         // GET: Borrowers
         public async Task<ActionResult> Index()
         {
-            var service = CreateBorrowerService();
-            var model = await service.GetBorrowers();
+            var borrowerService = CreateBorrowerService();
+            var model = await borrowerService.GetBorrowers();
 
             return View(model);
         }
@@ -38,9 +38,9 @@ namespace Borrowee.WebMVC.Controllers
                 return View(model);
             }
 
-            var service = CreateBorrowerService();
+            var borrowerService = CreateBorrowerService();
 
-            if (await service.CreateBorrower(model))
+            if (await borrowerService.CreateBorrower(model))
             {
                 TempData["SaveResult"] = "Your borrower was created.";
                 return RedirectToAction("Index");
@@ -55,8 +55,8 @@ namespace Borrowee.WebMVC.Controllers
         // Borrower/Details/{id}
         public async Task<ActionResult> Details(int id)
         {
-            var service = CreateBorrowerService();
-            var model = await service.GetBorrowerById(id);
+            var borrowerService = CreateBorrowerService();
+            var model = await borrowerService.GetBorrowerById(id);
 
             return View(model);
         }
@@ -64,8 +64,8 @@ namespace Borrowee.WebMVC.Controllers
         // GET: Edit
         public async Task<ActionResult> Edit(int id)
         {
-            var service = CreateBorrowerService();
-            var detail = await service.GetBorrowerById(id);
+            var borrowerService = CreateBorrowerService();
+            var detail = await borrowerService.GetBorrowerById(id);
 
             var model =
                 new BorrowerEdit
@@ -97,9 +97,9 @@ namespace Borrowee.WebMVC.Controllers
                 return View(model);
             }
 
-            var service = CreateBorrowerService();
+            var borrowerService = CreateBorrowerService();
 
-            if (await service.UpdateBorrower(model))
+            if (await borrowerService.UpdateBorrower(model))
             {
                 TempData["SaveResult"] = "Your borrower was updated.";
                 return RedirectToAction("Index");
@@ -114,8 +114,8 @@ namespace Borrowee.WebMVC.Controllers
         [ActionName("Delete")]
         public async Task<ActionResult> Delete(int id)
         {
-            var service = CreateBorrowerService();
-            var model = await service.GetBorrowerById(id);
+            var borrowerService = CreateBorrowerService();
+            var model = await borrowerService.GetBorrowerById(id);
 
             return View(model);
         }
@@ -133,9 +133,9 @@ namespace Borrowee.WebMVC.Controllers
                 return View(model);
             }
 
-            var service = CreateBorrowerService();
+            var borrowerService = CreateBorrowerService();
 
-            await service.DeleteBorrower(id);
+            await borrowerService.DeleteBorrower(id);
 
             TempData["SaveResult"] = "Your borrower was deleted.";
 
