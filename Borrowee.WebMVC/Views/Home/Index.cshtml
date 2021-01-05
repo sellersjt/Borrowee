@@ -1,11 +1,64 @@
-﻿@{
+﻿@model IEnumerable<Borrowee.Models.TransactionModels.TransactionListItem>
+@{
     ViewBag.Title = "Home Page";
 }
 
 @if (User.Identity.IsAuthenticated)
 {
     <h1>Welcome!</h1>
-    @Html.ActionLink("Items On Loan", "ItemsOnLoan", "Transaction")
+    if (Model.Count() > 0)
+    {
+        <h4>Here are your items on loan.</h4>
+        <table class="table">
+            <tr>
+                <th>
+                    @Html.DisplayNameFor(model => model.Item.Name)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Borrower.FirstName)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Borrower.LastName)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.LentOutDateUtc)
+                </th>
+                <th></th>
+            </tr>
+
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Item.Name)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Borrower.FirstName)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Borrower.LastName)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.LentOutDateUtc)
+                    </td>
+                    <td>
+                        @Html.ActionLink("Edit", "Edit", "Transaction", new { id = item.Id }, new { }) |
+                        @Html.ActionLink("Details", "Details", "Transaction", new { id = item.Id }, new { }) |
+                        @Html.ActionLink("Delete", "Delete", "Transaction", new { id = item.Id }, new { })
+                    </td>
+                </tr>
+            }
+
+        </table>
+    }
+    else
+    {
+        <h2>You do not have any items on loan!</h2>
+    }
+        @Html.ActionLink("Manage Items", "Index", "Item", new { area = "" }, new { @class = "btn btn-primary m-2" })
+        @Html.ActionLink("Manage Borrowers", "Index", "Borrower", new { area = "" }, new { @class = "btn btn-primary m-2" })
+        @Html.ActionLink("Manage Transactions", "Index", "Transaction", new { area = "" }, new { @class = "btn btn-primary m-2" })
+        @Html.ActionLink("Manage Images", "Index", "ItemImage", new { area = "" }, new { @class = "btn btn-primary m-2" })
 }
 else
 {
@@ -18,7 +71,7 @@ else
     <div class="card-group">
 
         <div class="card m-2 shadow rounded">
-            <div class="card-header">Getting started</div>
+            <div class="card-header">Item Database</div>
             <div class="card-body">
                 <p class="card-text">
                     ASP.NET MVC gives you a powerful, patterns-based way to build dynamic websites that
@@ -26,9 +79,9 @@ else
                     for enjoyable, agile development.
                 </p>
             </div>
-            <div class="card-footer">
+            @*<div class="card-footer">
                 <a class="btn btn-primary" href="https://go.microsoft.com/fwlink/?LinkId=301865">Learn more &raquo;</a>
-            </div>
+            </div>*@
         </div>
 
         <div class="card m-2 shadow">
@@ -38,9 +91,9 @@ else
                     NuGet is a free Visual Studio extension that makes it easy to add, remove, and update libraries and tools in Visual Studio projects.
                 </p>
             </div>
-            <div class="card-footer">
+            @*<div class="card-footer">
                 <a class="btn btn-primary" href="https://go.microsoft.com/fwlink/?LinkId=301866">Learn more &raquo;</a>
-            </div>
+            </div>*@
         </div>
 
         <div class="card m-2 shadow">
@@ -50,9 +103,9 @@ else
                     You can easily find a web hosting company that offers the right mix of features and price for your applications.
                 </p>
             </div>
-            <div class="card-footer">
+            @*<div class="card-footer">
                 <a class="btn btn-primary" href="https://go.microsoft.com/fwlink/?LinkId=301867">Learn more &raquo;</a>
-            </div>
+            </div>*@
         </div>
 
     </div>
