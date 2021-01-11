@@ -29,10 +29,10 @@
                 {
                     <tr>
                         <td>
-                            @Html.DisplayFor(modelItem => item.Item.Name)<br>
+                            @Html.DisplayFor(modelItem => item.Item.Name)
                             @if (item.ItemImage != null)
                             {
-                                <img src="@(Url.Content(Constants.ItemThumbnailPath) + @Html.DisplayFor(modelItem => item.ItemImage.FileName))" />
+                                <br><img src="@(Url.Content(Constants.ItemThumbnailPath) + @Html.DisplayFor(modelItem => item.ItemImage.FileName))" />
                             }
                         </td>
                         <td>

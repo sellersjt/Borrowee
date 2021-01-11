@@ -81,7 +81,8 @@ namespace Borrowee.Services
                         Borrower = entity.Borrower,
                         LentOutDateUtc = entity.LentOutDateUtc,
                         ReturnDateUtc = entity.ReturnDateUtc,
-                        IsReturned = entity.IsReturned
+                        IsReturned = entity.IsReturned,
+                        ItemImage = ctx.ItemImages.Where(i => i.Id == entity.Item.ItemImageId && i.OwnerId == _userId).FirstOrDefault()
                     };
             }
         }
