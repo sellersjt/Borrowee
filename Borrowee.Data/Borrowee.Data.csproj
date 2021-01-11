@@ -82,6 +82,14 @@
     <Compile Include="Migrations\202012242054125_CreateProductImageMappings.designer.cs">
       <DependentUpon>202012242054125_CreateProductImageMappings.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\202101070027471_AddItemImageToTransaction.cs" />
+    <Compile Include="Migrations\202101070027471_AddItemImageToTransaction.designer.cs">
+      <DependentUpon>202101070027471_AddItemImageToTransaction.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202101070340595_RemoveItemImageToTransaction.cs" />
+    <Compile Include="Migrations\202101070340595_RemoveItemImageToTransaction.designer.cs">
+      <DependentUpon>202101070340595_RemoveItemImageToTransaction.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
@@ -104,6 +112,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\202012242054125_CreateProductImageMappings.resx">
       <DependentUpon>202012242054125_CreateProductImageMappings.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202101070027471_AddItemImageToTransaction.resx">
+      <DependentUpon>202101070027471_AddItemImageToTransaction.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202101070340595_RemoveItemImageToTransaction.resx">
+      <DependentUpon>202101070340595_RemoveItemImageToTransaction.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

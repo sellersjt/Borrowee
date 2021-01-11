@@ -9,17 +9,14 @@
     if (Model.Count() > 0)
     {
         <h4>Here are your items out on loan.</h4>
-        <table class="table table-hover">
-            <thead class="thead-light">
+        <table class="table table-hover responsive-table">
+            <thead class="bg-dark">
                 <tr>
                     <th>
                         @Html.DisplayNameFor(model => model.Item.Name)
                     </th>
                     <th>
-                        @Html.DisplayNameFor(model => model.Borrower.FirstName)
-                    </th>
-                    <th>
-                        @Html.DisplayNameFor(model => model.Borrower.LastName)
+                        @Html.DisplayNameFor(model => model.Borrower)
                     </th>
                     <th>
                         @Html.DisplayNameFor(model => model.LentOutDateUtc)
@@ -36,8 +33,6 @@
                         </td>
                         <td>
                             @Html.DisplayFor(modelItem => item.Borrower.FirstName)
-                        </td>
-                        <td>
                             @Html.DisplayFor(modelItem => item.Borrower.LastName)
                         </td>
                         <td>
@@ -57,10 +52,13 @@
     {
         <h2>You do not have any items on loan!</h2>
     }
-    @Html.ActionLink("Manage Items", "Index", "Item", new { area = "" }, new { @class = "btn btn-primary m-2" })
-    @Html.ActionLink("Manage Borrowers", "Index", "Borrower", new { area = "" }, new { @class = "btn btn-primary m-2" })
-    @Html.ActionLink("Manage Transactions", "Index", "Transaction", new { area = "" }, new { @class = "btn btn-primary m-2" })
-    @Html.ActionLink("Manage Images", "Index", "ItemImage", new { area = "" }, new { @class = "btn btn-primary m-2" })
+    <div class="text-center">
+        @Html.ActionLink("Home", "Index", "Home", new { area = "" }, new { @class = "btn btn-primary m-2" })
+        @Html.ActionLink("Manage Items", "Index", "Item", new { area = "" }, new { @class = "btn btn-primary m-2" })
+        @Html.ActionLink("Manage Borrowers", "Index", "Borrower", new { area = "" }, new { @class = "btn btn-primary m-2" })
+        @Html.ActionLink("Manage Transactions", "Index", "Transaction", new { area = "" }, new { @class = "btn btn-primary m-2" })
+        @Html.ActionLink("Manage Images", "Index", "ItemImage", new { area = "" }, new { @class = "btn btn-primary m-2" })
+    </div>
 }
 else
 {
