@@ -137,7 +137,8 @@ namespace Borrowee.Services
                                     Borrower = t.Borrower,
                                     LentOutDateUtc = t.LentOutDateUtc,
                                     ReturnDateUtc = t.ReturnDateUtc,
-                                    IsReturned = t.IsReturned
+                                    IsReturned = t.IsReturned,
+                                    ItemImage = ctx.ItemImages.Where(i => i.Id == t.Item.ItemImageId && t.OwnerId == _userId).FirstOrDefault()
                                 });
 
                 return await query.ToArrayAsync();

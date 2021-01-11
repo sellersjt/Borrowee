@@ -29,7 +29,11 @@
                 {
                     <tr>
                         <td>
-                            @Html.DisplayFor(modelItem => item.Item.Name)
+                            @Html.DisplayFor(modelItem => item.Item.Name)<br>
+                            @if (item.ItemImage != null)
+                            {
+                                <img src="@(Url.Content(Constants.ItemThumbnailPath) + @Html.DisplayFor(modelItem => item.ItemImage.FileName))" />
+                            }
                         </td>
                         <td>
                             @Html.DisplayFor(modelItem => item.Borrower.FirstName)
