@@ -12,6 +12,7 @@ namespace Borrowee.Models.ItemModels
     {
         public int Id { get; set; }
 
+        [Display(Name = "Item")]
         public string Name { get; set; }
 
         public string Description { get; set; }

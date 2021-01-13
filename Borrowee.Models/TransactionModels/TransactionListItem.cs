@@ -25,6 +25,7 @@ namespace Borrowee.Models.TransactionModels
         [Display(Name = "Is Returned")]
         public bool IsReturned { get; set; } = false;
 
+        [Display(Name = "Item Image")]
         public ItemImage ItemImage { get; set; }
     }
 }

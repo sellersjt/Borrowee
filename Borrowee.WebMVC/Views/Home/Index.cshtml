@@ -9,11 +9,14 @@
     if (Model.Count() > 0)
     {
         <h4>Here are your items out on loan.</h4>
-        <table class="table table-hover responsive-table">
+        <table class="table table-hover rwd-table">
             <thead class="bg-dark">
                 <tr>
                     <th>
                         @Html.DisplayNameFor(model => model.Item.Name)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.ItemImage)
                     </th>
                     <th>
                         @Html.DisplayNameFor(model => model.Borrower)
@@ -21,28 +24,30 @@
                     <th>
                         @Html.DisplayNameFor(model => model.LentOutDateUtc)
                     </th>
-                    <th></th>
+                    <th>Action</th>
                 </tr>
             </thead>
             <tbody>
                 @foreach (var item in Model)
                 {
                     <tr>
-                        <td>
+                        <td data-th="@Html.DisplayNameFor(model => model.Item.Name)">
                             @Html.DisplayFor(modelItem => item.Item.Name)
+                        </td>
+                        <td data-th="@Html.DisplayNameFor(model => model.ItemImage)">
                             @if (item.ItemImage != null)
                             {
-                                <br><img src="@(Url.Content(Constants.ItemThumbnailPath) + @Html.DisplayFor(modelItem => item.ItemImage.FileName))" />
+                                <img src="@(Url.Content(Constants.ItemThumbnailPath) + @Html.DisplayFor(modelItem => item.ItemImage.FileName))" />
                             }
                         </td>
-                        <td>
+                        <td data-th="@Html.DisplayNameFor(model => model.Borrower)">
                             @Html.DisplayFor(modelItem => item.Borrower.FirstName)
                             @Html.DisplayFor(modelItem => item.Borrower.LastName)
                         </td>
-                        <td>
+                        <td data-th="@Html.DisplayNameFor(model => model.LentOutDateUtc)">
                             @Html.DisplayFor(modelItem => item.LentOutDateUtc)
                         </td>
-                        <td>
+                        <td data-th="Action">
                             @Html.ActionLink("Edit", "Edit", "Transaction", new { id = item.Id }, new { }) |
                             @Html.ActionLink("Details", "Details", "Transaction", new { id = item.Id }, new { }) |
                             @Html.ActionLink("Delete", "Delete", "Transaction", new { id = item.Id }, new { })

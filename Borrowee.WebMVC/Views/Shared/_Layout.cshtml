@@ -12,7 +12,9 @@
 </head>
 <body>
     <nav class="navbar navbar-expand-md navbar-dark bg-dark sticky-top">
-        <i class="fa fa-users navbar-brand text-primary"></i>
+        <a href="/">
+            <i class="fa fa-users navbar-brand text-primary"></i>
+        </a>
         @Html.ActionLink("Borrowee", "Index", "Home", new { area = "" }, new { @class = "navbar-brand" })
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarColor01" aria-controls="navbarColor01" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
@@ -35,7 +37,7 @@
         </div>
     </nav>
 
-    <div class="container body-content">
+    <div class="container-fluid body-content">
         @RenderBody()
         <hr />
         <footer>
