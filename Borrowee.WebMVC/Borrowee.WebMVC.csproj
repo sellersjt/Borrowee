@@ -382,7 +382,6 @@
     <Content Include="Views\Error\FileUploadLimitExceeded.cshtml" />
     <Content Include="Views\ItemImage\Details.cshtml" />
     <Content Include="Views\ItemImage\Delete.cshtml" />
-    <Content Include="Views\Transaction\ItemsOnLoan.cshtml" />
     <Content Include="Views\Home\_NotAuthenticated.cshtml" />
   </ItemGroup>
   <ItemGroup>

@@ -182,15 +182,6 @@ namespace Borrowee.WebMVC.Controllers
             return RedirectToAction("Index");
         }
 
-        // GET: Items On Loan
-        public async Task<ActionResult> ItemsOnLoan()
-        {
-            var transactionService = CreateTransactionService();
-            var model = await transactionService.GetItemsOnLoan();
-
-            return View(model);
-        }
-
         private TransactionService CreateTransactionService()
         {
             var userId = Guid.Parse(User.Identity.GetUserId());
