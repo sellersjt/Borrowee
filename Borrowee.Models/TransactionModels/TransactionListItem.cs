@@ -23,6 +23,7 @@ namespace Borrowee.Models.TransactionModels
         public DateTimeOffset? ReturnDateUtc { get; set; }
 
         [Display(Name = "Is Returned")]
+        [UIHint("Returned")]
         public bool IsReturned { get; set; } = false;
 
         [Display(Name = "Item Image")]

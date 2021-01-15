@@ -67,7 +67,7 @@
                     @Html.DisplayFor(modelItem => item.ReturnDateUtc)
                 </td>
                 <td data-th="@Html.DisplayNameFor(model => model.IsReturned)">
-                    @Html.DisplayFor(modelItem => item.IsReturned)
+                    @Html.DisplayFor(modelItem => item.IsReturned, new { Id = item.Id })
                 </td>
                 <td data-th="Action">
                     @Html.ActionLink("Edit", "Edit", new { id = item.Id }) |
@@ -85,3 +85,29 @@
     @Html.ActionLink("Manage Transactions", "Index", "Transaction", new { area = "" }, new { @class = "btn btn-primary m-2" })
     @Html.ActionLink("Manage Images", "Index", "ItemImage", new { area = "" }, new { @class = "btn btn-primary m-2" })
 </div>
+
+@section scripts {
+    <script language="javascript" type="text/javascript">
+        $(document).ready(function () {
+            $("i[data-toggle='returned']")
+                .click(function (e) {
+                    var target = $(e.target);
+                    var transactionId = target.attr("data-id");
+                    var returnedSet = target.hasClass("fa-check-square-o");
+
+                    $.ajax({
+                        method: returnedSet ? "DELETE" : "PUT",
+                        url: "/api/transaction/" + transactionId + "/return",
+                        data: null
+                    })
+                        .done(function (r) {
+                            target.removeClass();
+                            target.addClass("fa " + (returnedSet ? "fa-square-o" : "fa-check-square-o"));
+                        })
+                        .fail(function (r) {
+                            alert("Failed to change returned status");
+                        });
+                });
+        });
+    </script>
+}
