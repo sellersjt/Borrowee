@@ -64,7 +64,7 @@
                     @Html.DisplayFor(modelItem => item.LentOutDateUtc)
                 </td>
                 <td data-th="@Html.DisplayNameFor(model => model.ReturnDateUtc)">
-                    @Html.DisplayFor(modelItem => item.ReturnDateUtc)
+                    @Html.DisplayFor(modelItem => item.ReturnDateUtc, new { Id = item.Id })
                 </td>
                 <td data-th="@Html.DisplayNameFor(model => model.IsReturned)">
                     @Html.DisplayFor(modelItem => item.IsReturned, new { Id = item.Id })
@@ -103,6 +103,13 @@
                         .done(function (r) {
                             target.removeClass();
                             target.addClass("fa " + (returnedSet ? "fa-square-o" : "fa-check-square-o"));
+
+                            if (returnedSet) {
+                                document.getElementById(transactionId).innerHTML = "";
+                            }
+                            else {
+                                document.getElementById(transactionId).innerHTML = new Date().toLocaleDateString();
+                            }
                         })
                         .fail(function (r) {
                             alert("Failed to change returned status");
