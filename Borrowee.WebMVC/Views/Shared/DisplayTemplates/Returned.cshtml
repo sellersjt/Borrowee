@@ -3,5 +3,8 @@
 <span>
     <i class="fa @(Model ? "fa-check-square-o" : "fa-square-o")"
        data-toggle="returned"
-       data-id="@ViewBag.Id"></i>
+       data-id="@ViewBag.Id"
+       @if (ViewBag.Id != null)
+       { <text>tooltip-toggle= "tooltip" data-placement = "top" title = "Click to change"</text>}
+       ></i>
 </span>
