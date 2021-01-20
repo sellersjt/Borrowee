@@ -1,65 +1,69 @@
 ﻿@model IEnumerable<Borrowee.Models.TransactionModels.TransactionListItem>
-@{
+    @{
     ViewBag.Title = "Borrowee Home";
-}
+    }
 
-@if (User.Identity.IsAuthenticated)
-{
+    @if (User.Identity.IsAuthenticated)
+    {
     <h2>Welcome to Borrowee!</h2>
     if (Model.Count() > 0)
     {
-        <h4>Here are your items out on loan.</h4>
-        <table class="table table-hover rwd-table">
-            <thead class="bg-dark">
-                <tr>
-                    <th>
-                        @Html.DisplayNameFor(model => model.Item.Name)
-                    </th>
-                    <th>
-                        @Html.DisplayNameFor(model => model.ItemImage)
-                    </th>
-                    <th>
-                        @Html.DisplayNameFor(model => model.Borrower)
-                    </th>
-                    <th>
-                        @Html.DisplayNameFor(model => model.LentOutDateUtc)
-                    </th>
-                    <th>Action</th>
-                </tr>
-            </thead>
-            <tbody>
-                @foreach (var item in Model)
-                {
-                    <tr>
-                        <td data-th="@Html.DisplayNameFor(model => model.Item.Name)">
-                            @Html.DisplayFor(modelItem => item.Item.Name)
-                        </td>
-                        <td data-th="@Html.DisplayNameFor(model => model.ItemImage)">
-                            @if (item.ItemImage != null)
-                            {
-                                <img src="@(Url.Content(Constants.ItemThumbnailPath) + @Html.DisplayFor(modelItem => item.ItemImage.FileName))" class="rounded-jt" />
-                            }
-                        </td>
-                        <td data-th="@Html.DisplayNameFor(model => model.Borrower)">
-                            @Html.DisplayFor(modelItem => item.Borrower.FirstName)
-                            @Html.DisplayFor(modelItem => item.Borrower.LastName)
-                        </td>
-                        <td data-th="@Html.DisplayNameFor(model => model.LentOutDateUtc)">
-                            @Html.DisplayFor(modelItem => item.LentOutDateUtc)
-                        </td>
-                        <td data-th="Action">
-                            @Html.ActionLink("Edit", "Edit", "Transaction", new { id = item.Id }, new { }) |
-                            @Html.ActionLink("Details", "Details", "Transaction", new { id = item.Id }, new { }) |
-                            @Html.ActionLink("Delete", "Delete", "Transaction", new { id = item.Id }, new { })
-                        </td>
-                    </tr>
-                }
-            </tbody>
-        </table>
+    <h4>Here are your items out on loan.</h4>
+    <table class="table table-hover rwd-table">
+        <thead class="bg-dark">
+            <tr>
+                <th>
+                    @Html.DisplayNameFor(model => model.Item.Name)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.ItemImage)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Borrower)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.LentOutDateUtc)
+                </th>
+                <th>Mark Returned</th>
+                <th>Action</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in Model)
+            {
+            <tr>
+                <td data-th="@Html.DisplayNameFor(model => model.Item.Name)">
+                    @Html.DisplayFor(modelItem => item.Item.Name)
+                </td>
+                <td data-th="@Html.DisplayNameFor(model => model.ItemImage)">
+                    @if (item.ItemImage != null)
+                    {
+                    <img src="@(Url.Content(Constants.ItemThumbnailPath) + @Html.DisplayFor(modelItem => item.ItemImage.FileName))" class="rounded-jt" />
+                    }
+                </td>
+                <td data-th="@Html.DisplayNameFor(model => model.Borrower)">
+                    @Html.DisplayFor(modelItem => item.Borrower.FirstName)
+                    @Html.DisplayFor(modelItem => item.Borrower.LastName)
+                </td>
+                <td data-th="@Html.DisplayNameFor(model => model.LentOutDateUtc)">
+                    @Html.DisplayFor(modelItem => item.LentOutDateUtc)
+                </td>
+                <td data-th="Mark Returned">
+                    @Html.DisplayFor(modelItem => item.IsReturned, new { Id = item.Id })
+                </td>
+                <td data-th="Action">
+                    @Html.ActionLink("Edit", "Edit", "Transaction", new { id = item.Id }, new { }) |
+                    @Html.ActionLink("Details", "Details", "Transaction", new { id = item.Id }, new { }) |
+                    @Html.ActionLink("Delete", "Delete", "Transaction", new { id = item.Id }, new { })
+                </td>
+            </tr>
+            }
+        </tbody>
+    </table>
     }
     else
     {
-        <h2>You do not have any items on loan!</h2>
+    <h2>You do not have any items on loan!</h2>
     }
     <div class="text-center">
         @Html.ActionLink("Home", "Index", "Home", new { area = "" }, new { @class = "btn btn-primary m-2" })
@@ -68,8 +72,38 @@
         @Html.ActionLink("Manage Transactions", "Index", "Transaction", new { area = "" }, new { @class = "btn btn-primary m-2" })
         @Html.ActionLink("Manage Images", "Index", "ItemImage", new { area = "" }, new { @class = "btn btn-primary m-2" })
     </div>
-}
-else
-{
+
+    @section scripts {
+    <script language="javascript" type="text/javascript">
+            $(document).ready(function () {
+                $("i[data-toggle='returned']")
+                    .click(function (e) {
+                        var target = $(e.target);
+                        var transactionId = target.attr("data-id");
+                        var returnedSet = target.hasClass("fa-check-square-o");
+
+                        $.ajax({
+                            method: returnedSet ? "DELETE" : "PUT",
+                            url: "/api/transaction/" + transactionId + "/return",
+                            data: null
+                        })
+                            .done(function (r) {
+                                target.removeClass();
+                                target.addClass("fa " + (returnedSet ? "fa-square-o" : "fa-check-square-o"));
+                            })
+                            .fail(function (r) {
+                                alert("Failed to change returned status");
+                            });
+                    });
+            });
+
+            $(document).ready(function () {
+                $('[tooltip-toggle="tooltip"]').tooltip();
+            });
+    </script>
+    }
+    }
+    else
+    {
     @Html.Partial("_NotAuthenticated")
-}
+    }
