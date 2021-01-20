@@ -16,6 +16,10 @@
 
         <dd>
             @Html.DisplayFor(model => model.Item.Name)
+            @if (Model.ItemImage != null)
+            {
+                <br><img src="@(Url.Content(Constants.ItemImagePath) + @Html.DisplayFor(model => model.ItemImage.FileName))" class="rounded-jt" />
+            }
         </dd>
 
         <dt>

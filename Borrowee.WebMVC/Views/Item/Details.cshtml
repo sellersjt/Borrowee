@@ -56,7 +56,7 @@
         <dd>
             @if (Model.ItemImage != null)
             {
-                <img src="@(Url.Content(Constants.ItemImagePath) + @Html.DisplayFor(modelItem => Model.ItemImage.FileName))" />
+                <img src="@(Url.Content(Constants.ItemImagePath) + @Html.DisplayFor(modelItem => Model.ItemImage.FileName))" class="rounded-jt" />
             }
         </dd>
 

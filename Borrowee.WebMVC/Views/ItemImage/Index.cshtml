@@ -36,7 +36,7 @@
         {
             <tr>
                 <td data-th="Image">
-                    <img src="@(Url.Content(Constants.ItemThumbnailPath) + @Html.DisplayFor(modelItem => item.FileName))" />
+                    <img src="@(Url.Content(Constants.ItemThumbnailPath) + @Html.DisplayFor(modelItem => item.FileName))" class="rounded-jt" />
                 </td>
                 <td data-th="@Html.DisplayNameFor(model => model.FileName)">
                     @Html.DisplayFor(modelItem => item.FileName)
