@@ -74,19 +74,27 @@ namespace Borrowee.WebMVC.Controllers
 
         // GET: Details
         // Transaction/Details/{id}
-        public async Task<ActionResult> Details(int id)
+        public async Task<ActionResult> Details(int? id)
         {
+            if (id == null)
+            {
+                return RedirectToAction("Index");
+            }
             var transactionService = CreateTransactionService();
-            var model = await transactionService.GetTransactionById(id);
+            var model = await transactionService.GetTransactionById((int)id);
 
             return View(model);
         }
 
         // GET: Edit
-        public async Task<ActionResult> Edit(int id)
+        public async Task<ActionResult> Edit(int? id)
         {
+            if (id == null)
+            {
+                return RedirectToAction("Index");
+            }
             var transactionService = CreateTransactionService();
-            var detail = await transactionService.GetTransactionById(id);
+            var detail = await transactionService.GetTransactionById((int)id);
 
             var itemService = CreateItemService();
             var items = await itemService.GetItems();
@@ -152,10 +160,14 @@ namespace Borrowee.WebMVC.Controllers
         // GET: Delete
         // Transaction/Delete/{id}
         [ActionName("Delete")]
-        public async Task<ActionResult> Delete(int id)
+        public async Task<ActionResult> Delete(int? id)
         {
+            if (id == null)
+            {
+                return RedirectToAction("Index");
+            }
             var transactionService = CreateTransactionService();
-            var model = await transactionService.GetTransactionById(id);
+            var model = await transactionService.GetTransactionById((int)id);
 
             return View(model);
         }

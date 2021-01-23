@@ -64,19 +64,27 @@ namespace Borrowee.WebMVC.Controllers
 
         // GET: Details
         // Item/Details/{id}
-        public async Task<ActionResult> Details(int id)
+        public async Task<ActionResult> Details(int? id)
         {
+            if (id == null)
+            {
+                return RedirectToAction("Index");
+            }
             var itemService = CreateItemService();
-            var model = await itemService.GetItemById(id);
+            var model = await itemService.GetItemById((int)id);
 
             return View(model);
         }
 
         // GET: Edit
-        public async Task<ActionResult> Edit(int id)
+        public async Task<ActionResult> Edit(int? id)
         {
+            if (id == null)
+            {
+                return RedirectToAction("Index");
+            }
             var itemService = CreateItemService();
-            var detail = await itemService.GetItemById(id);
+            var detail = await itemService.GetItemById((int)id);
 
             var itemImageService = CreateItemImageService();
             var images = await itemImageService.GetItemImages();
@@ -134,10 +142,14 @@ namespace Borrowee.WebMVC.Controllers
         // GET: Delete
         // Item/Delete/{id}
         [ActionName("Delete")]
-        public async Task<ActionResult> Delete(int id)
+        public async Task<ActionResult> Delete(int? id)
         {
+            if (id == null)
+            {
+                return RedirectToAction("Index");
+            }
             var itemService = CreateItemService();
-            var model = await itemService.GetItemById(id);
+            var model = await itemService.GetItemById((int)id);
 
             return View(model);
         }

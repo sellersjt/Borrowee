@@ -53,19 +53,27 @@ namespace Borrowee.WebMVC.Controllers
 
         // GET: Details
         // Borrower/Details/{id}
-        public async Task<ActionResult> Details(int id)
+        public async Task<ActionResult> Details(int? id)
         {
+            if (id == null)
+            {
+                return RedirectToAction("Index");
+            }
             var borrowerService = CreateBorrowerService();
-            var model = await borrowerService.GetBorrowerById(id);
+            var model = await borrowerService.GetBorrowerById((int)id);
 
             return View(model);
         }
 
         // GET: Edit
-        public async Task<ActionResult> Edit(int id)
+        public async Task<ActionResult> Edit(int? id)
         {
+            if (id == null)
+            {
+                return RedirectToAction("Index");
+            }
             var borrowerService = CreateBorrowerService();
-            var detail = await borrowerService.GetBorrowerById(id);
+            var detail = await borrowerService.GetBorrowerById((int)id);
 
             var model =
                 new BorrowerEdit
@@ -112,10 +120,14 @@ namespace Borrowee.WebMVC.Controllers
         // GET: Delete
         // Borrower/Delete/{id}
         [ActionName("Delete")]
-        public async Task<ActionResult> Delete(int id)
+        public async Task<ActionResult> Delete(int? id)
         {
+            if (id == null)
+            {
+                return RedirectToAction("Index");
+            }
             var borrowerService = CreateBorrowerService();
-            var model = await borrowerService.GetBorrowerById(id);
+            var model = await borrowerService.GetBorrowerById((int)id);
 
             return View(model);
         }
