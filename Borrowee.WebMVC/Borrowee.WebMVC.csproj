@@ -216,6 +216,11 @@
     <Content Include="Content\fontawesome\font-awesome.css" />
     <Content Include="Content\fontawesome\font-awesome.min.css" />
     <Content Include="Content\fonts\fontawesome-webfont.svg" />
+    <Content Include="Content\images\borrowers_icon.png" />
+    <Content Include="Content\images\database_icon.png" />
+    <Content Include="Content\images\main_graphic.png" />
+    <Content Include="Content\images\main_graphic_notext.png" />
+    <Content Include="Content\images\transactions_icon.png" />
     <Content Include="favicon.ico" />
     <Content Include="Global.asax" />
     <Content Include="Content\Site.css" />

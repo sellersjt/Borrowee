@@ -16,13 +16,6 @@
     white-space: normal;
 }
 
-/* Set width on the form input elements since they're 100% wide by default */
-input,
-select,
-textarea {
-    max-width: 300px;
-}
-
 /* custom table */
 table {
     box-shadow: 0 1px 10px rgba(0, 0, 0, 0.2);
@@ -71,6 +64,24 @@ table {
         border-top: none;
     }
 
+.rwd-table {
+    background: #34495e;
+    color: #fff;
+    border-radius: 0.4em;
+    overflow: hidden;
+}
+
+    .rwd-table th,
+    .rwd-table td {
+        margin: 0.5em 1em;
+    }
+
+        .rwd-table th,
+        .rwd-table td:before {
+            color: #def2f8;
+            vertical-align: top;
+        }
+
 @media (min-width: 767px) {
     .rwd-table th,
     .rwd-table td {
@@ -102,24 +113,6 @@ table {
     }
 }
 
-.rwd-table {
-    background: #34495e;
-    color: #fff;
-    border-radius: 0.4em;
-    overflow: hidden;
-}
-
-    .rwd-table th,
-    .rwd-table td {
-        margin: 0.5em 1em;
-    }
-
-        .rwd-table th,
-        .rwd-table td:before {
-            color: #def2f8;
-            vertical-align: top;
-        }
-
 /* custom <dl> */
 dl {
     display: flex;
@@ -127,7 +120,7 @@ dl {
 }
 
 dt {
-    flex-basis: 20%;
+    flex-basis: 40%;
     padding: 2px 4px;
     text-align: right;
 }
@@ -137,7 +130,7 @@ dt {
     }
 
 dd {
-    flex-basis: 70%;
+    flex-basis: 60%;
     flex-grow: 1;
     margin: 0;
     padding: 2px 4px;
@@ -146,4 +139,17 @@ dd {
 /* custom rounded */
 .rounded-jt {
     border-radius: .4em !important;
+}
+
+.rounded-top {
+    border-radius: .4em .4em 0 0 !important;
+}
+
+.rounded-bottom {
+    border-radius: 0 0 .4em .4em !important;
+}
+
+/* custom jumbotron */
+.jumbotron {
+    padding: 0;
 }
