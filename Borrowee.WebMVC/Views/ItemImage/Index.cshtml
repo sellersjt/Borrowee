@@ -4,55 +4,62 @@
     ViewBag.Title = "Item Image List";
 }
 
-<h2>@ViewBag.Title</h2>
-
-<p>
-    @Html.ActionLink("Upload New Image", "Upload")
-</p>
-@if (TempData.ContainsKey("SaveResult"))
-{
-    <div class="alert alert-success alert-dismissible fade show" role="alert">
-        <button type="button" class="close" data-dismiss="alert">
-            <span>&times;</span>
-        </button>
-        @TempData["SaveResult"]
+<div class="container">
+    <div class="row">
+        <div class="col">
+            <h2>@ViewBag.Title.</h2>
+        </div>
     </div>
-}
-
-<table class="table table-hover rwd-table">
-    <thead class="bg-dark">
-        <tr>
-            <th>
-                Image
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.FileName)
-            </th>
-            <th>Action</th>
-        </tr>
-    </thead>
-    <tbody>
-        @foreach (var item in Model)
-        {
+</div>
+<hr />
+<div class="container">
+    <p>
+        @Html.ActionLink("Upload New Image", "Upload")
+    </p>
+    @if (TempData.ContainsKey("SaveResult"))
+    {
+        <div class="alert alert-success alert-dismissible fade show" role="alert">
+            <button type="button" class="close" data-dismiss="alert">
+                <span>&times;</span>
+            </button>
+            @TempData["SaveResult"]
+        </div>
+    }
+    <table class="table table-hover rwd-table">
+        <thead class="bg-dark">
             <tr>
-                <td data-th="Image">
-                    <img src="@(Url.Content(Constants.ItemThumbnailPath) + @Html.DisplayFor(modelItem => item.FileName))" class="rounded-jt" />
-                </td>
-                <td data-th="@Html.DisplayNameFor(model => model.FileName)">
-                    @Html.DisplayFor(modelItem => item.FileName)
-                </td>
-                <td data-th="Action">
-                    @Html.ActionLink("Details", "Details", new { id = item.Id }) |
-                    @Html.ActionLink("Delete", "Delete", new { id = item.Id })
-                </td>
+                <th>
+                    Image
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.FileName)
+                </th>
+                <th>Action</th>
             </tr>
-        }
-    </tbody>
-</table>
-<div class="text-center">
-    @Html.ActionLink("Home", "Index", "Home", new { area = "" }, new { @class = "btn btn-primary m-2" })
-    @Html.ActionLink("Manage Items", "Index", "Item", new { area = "" }, new { @class = "btn btn-primary m-2" })
-    @Html.ActionLink("Manage Borrowers", "Index", "Borrower", new { area = "" }, new { @class = "btn btn-primary m-2" })
-    @Html.ActionLink("Manage Transactions", "Index", "Transaction", new { area = "" }, new { @class = "btn btn-primary m-2" })
-    @Html.ActionLink("Manage Images", "Index", "ItemImage", new { area = "" }, new { @class = "btn btn-primary m-2" })
+        </thead>
+        <tbody>
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <td data-th="Image">
+                        <img src="@(Url.Content(Constants.ItemThumbnailPath) + @Html.DisplayFor(modelItem => item.FileName))" class="rounded-jt" />
+                    </td>
+                    <td data-th="@Html.DisplayNameFor(model => model.FileName)">
+                        @Html.DisplayFor(modelItem => item.FileName)
+                    </td>
+                    <td data-th="Action">
+                        @Html.ActionLink("Details", "Details", new { id = item.Id }) |
+                        @Html.ActionLink("Delete", "Delete", new { id = item.Id })
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+    <div class="text-center">
+        @Html.ActionLink("Home", "Index", "Home", new { area = "" }, new { @class = "btn btn-primary m-2" })
+        @Html.ActionLink("Manage Items", "Index", "Item", new { area = "" }, new { @class = "btn btn-primary m-2" })
+        @Html.ActionLink("Manage Borrowers", "Index", "Borrower", new { area = "" }, new { @class = "btn btn-primary m-2" })
+        @Html.ActionLink("Manage Transactions", "Index", "Transaction", new { area = "" }, new { @class = "btn btn-primary m-2" })
+        @Html.ActionLink("Manage Images", "Index", "ItemImage", new { area = "" }, new { @class = "btn btn-primary m-2" })
+    </div>
 </div>

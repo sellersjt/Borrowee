@@ -4,30 +4,40 @@
     ViewBag.Title = "Item Image Details";
 }
 
-<h2>@ViewBag.Title</h2>
-
-<div>
-    <hr />
-    <dl class="dl-horizontal">
-        
-        <dt>
-            @Html.DisplayNameFor(model => model.FileName)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.FileName)
-        </dd>
-
-        <dt>
-            Image
-        </dt>
-
-        <dd>
-            <img src="@(Url.Content(Constants.ItemImagePath) + @Html.DisplayFor(model => model.FileName))" class="rounded-jt" />
-        </dd>
-
-    </dl>
+<div class="container">
+    <div class="row">
+        <div class="col">
+            <h2>@ViewBag.Title.</h2>
+        </div>
+    </div>
 </div>
-<p>
-    @Html.ActionLink("Back to List", "Index")
-</p>
+<hr />
+<div class="container">
+    <div class="row">
+        <div class="col-md-6">
+            <dl class="dl-horizontal">
+                <dt>
+                    @Html.DisplayNameFor(model => model.FileName)
+                </dt>
+                <dd>
+                    @Html.DisplayFor(model => model.FileName)
+                </dd>
+                <dt>
+                    Image
+                </dt>
+                <dd>
+                    <img src="@(Url.Content(Constants.ItemImagePath) + @Html.DisplayFor(model => model.FileName))" class="rounded-jt" />
+                </dd>
+            </dl>
+        </div>
+    </div>
+</div>
+<div class="container">
+    <div class="row">
+        <div class="col">
+            <p>
+                @Html.ActionLink("Back to List", "Index")
+            </p>
+        </div>
+    </div>
+</div>

@@ -4,68 +4,75 @@
     ViewBag.Title = "Borrowers List";
 }
 
-<h2>@ViewBag.Title</h2>
-
-<p>
-    @Html.ActionLink("Create New", "Create")
-</p>
-@if (TempData.ContainsKey("SaveResult"))
-{
-    <div class="alert alert-success alert-dismissible fade show" role="alert">
-        <button type="button" class="close" data-dismiss="alert">
-            <span>&times;</span>
-        </button>
-        @TempData["SaveResult"]
+<div class="container">
+    <div class="row">
+        <div class="col">
+            <h2>@ViewBag.Title.</h2>
+        </div>
     </div>
-}
-
-<table class="table table-hover rwd-table">
-    <thead class="bg-dark">
-        <tr>
-            <th>
-                @Html.DisplayNameFor(model => model.FirstName)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.LastName)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.PhoneNumber)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.EmailAddress)
-            </th>
-            <th>Action</th>
-        </tr>
-    </thead>
-    <tbody>
-        @foreach (var item in Model)
-        {
+</div>
+<hr />
+<div class="container">
+    <p>
+        @Html.ActionLink("Create New", "Create")
+    </p>
+    @if (TempData.ContainsKey("SaveResult"))
+    {
+        <div class="alert alert-success alert-dismissible fade show" role="alert">
+            <button type="button" class="close" data-dismiss="alert">
+                <span>&times;</span>
+            </button>
+            @TempData["SaveResult"]
+        </div>
+    }
+    <table class="table table-hover rwd-table">
+        <thead class="bg-dark">
             <tr>
-                <td data-th="@Html.DisplayNameFor(model => model.FirstName)">
-                    @Html.DisplayFor(modelItem => item.FirstName)
-                </td>
-                <td data-th="@Html.DisplayNameFor(model => model.LastName)">
-                    @Html.DisplayFor(modelItem => item.LastName)
-                </td>
-                <td data-th="@Html.DisplayNameFor(model => model.PhoneNumber)">
-                    @Html.DisplayFor(modelItem => item.PhoneNumber)
-                </td>
-                <td data-th="@Html.DisplayNameFor(model => model.EmailAddress)">
-                    @Html.DisplayFor(modelItem => item.EmailAddress)
-                </td>
-                <td data-th="Action">
-                    @Html.ActionLink("Edit", "Edit", new { id = item.Id }) |
-                    @Html.ActionLink("Details", "Details", new { id = item.Id }) |
-                    @Html.ActionLink("Delete", "Delete", new { id = item.Id })
-                </td>
+                <th>
+                    @Html.DisplayNameFor(model => model.FirstName)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.LastName)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.PhoneNumber)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.EmailAddress)
+                </th>
+                <th>Action</th>
             </tr>
-        }
-    </tbody>
-</table>
-<div class="text-center">
-    @Html.ActionLink("Home", "Index", "Home", new { area = "" }, new { @class = "btn btn-primary m-2" })
-    @Html.ActionLink("Manage Items", "Index", "Item", new { area = "" }, new { @class = "btn btn-primary m-2" })
-    @Html.ActionLink("Manage Borrowers", "Index", "Borrower", new { area = "" }, new { @class = "btn btn-primary m-2" })
-    @Html.ActionLink("Manage Transactions", "Index", "Transaction", new { area = "" }, new { @class = "btn btn-primary m-2" })
-    @Html.ActionLink("Manage Images", "Index", "ItemImage", new { area = "" }, new { @class = "btn btn-primary m-2" })
+        </thead>
+        <tbody>
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <td data-th="@Html.DisplayNameFor(model => model.FirstName)">
+                        @Html.DisplayFor(modelItem => item.FirstName)
+                    </td>
+                    <td data-th="@Html.DisplayNameFor(model => model.LastName)">
+                        @Html.DisplayFor(modelItem => item.LastName)
+                    </td>
+                    <td data-th="@Html.DisplayNameFor(model => model.PhoneNumber)">
+                        @Html.DisplayFor(modelItem => item.PhoneNumber)
+                    </td>
+                    <td data-th="@Html.DisplayNameFor(model => model.EmailAddress)">
+                        @Html.DisplayFor(modelItem => item.EmailAddress)
+                    </td>
+                    <td data-th="Action">
+                        @Html.ActionLink("Edit", "Edit", new { id = item.Id }) |
+                        @Html.ActionLink("Details", "Details", new { id = item.Id }) |
+                        @Html.ActionLink("Delete", "Delete", new { id = item.Id })
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+    <div class="text-center">
+        @Html.ActionLink("Home", "Index", "Home", new { area = "" }, new { @class = "btn btn-primary m-2" })
+        @Html.ActionLink("Manage Items", "Index", "Item", new { area = "" }, new { @class = "btn btn-primary m-2" })
+        @Html.ActionLink("Manage Borrowers", "Index", "Borrower", new { area = "" }, new { @class = "btn btn-primary m-2" })
+        @Html.ActionLink("Manage Transactions", "Index", "Transaction", new { area = "" }, new { @class = "btn btn-primary m-2" })
+        @Html.ActionLink("Manage Images", "Index", "ItemImage", new { area = "" }, new { @class = "btn btn-primary m-2" })
+    </div>
 </div>
