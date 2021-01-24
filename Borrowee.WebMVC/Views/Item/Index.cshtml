@@ -4,83 +4,90 @@
     ViewBag.Title = "Item List";
 }
 
-<h2>@ViewBag.Title</h2>
-
-<p>
-    @Html.ActionLink("Create New", "Create")
-</p>
-@if (TempData.ContainsKey("SaveResult"))
-{
-    <div class="alert alert-success alert-dismissible fade show" role="alert">
-        <button type="button" class="close" data-dismiss="alert">
-            <span>&times;</span>
-        </button>
-        @TempData["SaveResult"]
+<div class="container">
+    <div class="row">
+        <div class="col">
+            <h2>@ViewBag.Title.</h2>
+        </div>
     </div>
-}
-
-<table class="table table-hover rwd-table">
-    <thead class="bg-dark">
-        <tr>
-            <th>
-                @Html.DisplayNameFor(model => model.Name)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.ItemImage)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Description)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.ModelNumber)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.SerialNumber)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Value)
-            </th>
-            <th>Action</th>
-        </tr>
-    </thead>
-    <tbody>
-        @foreach (var item in Model)
-        {
+</div>
+<hr />
+<div class="container">
+    <p>
+        @Html.ActionLink("Create New", "Create")
+    </p>
+    @if (TempData.ContainsKey("SaveResult"))
+    {
+        <div class="alert alert-success alert-dismissible fade show" role="alert">
+            <button type="button" class="close" data-dismiss="alert">
+                <span>&times;</span>
+            </button>
+            @TempData["SaveResult"]
+        </div>
+    }
+    <table class="table table-hover rwd-table">
+        <thead class="bg-dark">
             <tr>
-                <td data-th="@Html.DisplayNameFor(model => model.Name)">
-                    @Html.DisplayFor(modelItem => item.Name)
-                </td>
-                <td data-th="@Html.DisplayNameFor(model => model.ItemImage)">
-                    @if (item.ItemImage != null)
-                    {
-                        <img src="@(Url.Content(Constants.ItemThumbnailPath) + @Html.DisplayFor(modelItem => item.ItemImage.FileName))" />
-                    }
-                </td>
-                <td data-th="@Html.DisplayNameFor(model => model.Description)">
-                    @Html.DisplayFor(modelItem => item.Description)
-                </td>
-                <td data-th="@Html.DisplayNameFor(model => model.ModelNumber)">
-                    @Html.DisplayFor(modelItem => item.ModelNumber)
-                </td>
-                <td data-th="@Html.DisplayNameFor(model => model.SerialNumber)">
-                    @Html.DisplayFor(modelItem => item.SerialNumber)
-                </td>
-                <td data-th="@Html.DisplayNameFor(model => model.Value)">
-                    @Html.DisplayFor(modelItem => item.Value)
-                </td>
-                <td data-th="Action">
-                    @Html.ActionLink("Edit", "Edit", new { id = item.Id }) |
-                    @Html.ActionLink("Details", "Details", new { id = item.Id }) |
-                    @Html.ActionLink("Delete", "Delete", new { id = item.Id })
-                </td>
+                <th>
+                    @Html.DisplayNameFor(model => model.Name)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.ItemImage)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Description)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.ModelNumber)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.SerialNumber)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Value)
+                </th>
+                <th>Action</th>
             </tr>
-        }
-    </tbody>
-</table>
-<div class="text-center">
-    @Html.ActionLink("Home", "Index", "Home", new { area = "" }, new { @class = "btn btn-primary m-2" })
-    @Html.ActionLink("Manage Items", "Index", "Item", new { area = "" }, new { @class = "btn btn-primary m-2" })
-    @Html.ActionLink("Manage Borrowers", "Index", "Borrower", new { area = "" }, new { @class = "btn btn-primary m-2" })
-    @Html.ActionLink("Manage Transactions", "Index", "Transaction", new { area = "" }, new { @class = "btn btn-primary m-2" })
-    @Html.ActionLink("Manage Images", "Index", "ItemImage", new { area = "" }, new { @class = "btn btn-primary m-2" })
+        </thead>
+        <tbody>
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <td data-th="@Html.DisplayNameFor(model => model.Name)">
+                        @Html.DisplayFor(modelItem => item.Name)
+                    </td>
+                    <td data-th="@Html.DisplayNameFor(model => model.ItemImage)">
+                        @if (item.ItemImage != null)
+                        {
+                            <img src="@(Url.Content(Constants.ItemThumbnailPath) + @Html.DisplayFor(modelItem => item.ItemImage.FileName))" class="rounded-jt" />
+                        }
+                    </td>
+                    <td data-th="@Html.DisplayNameFor(model => model.Description)">
+                        @Html.DisplayFor(modelItem => item.Description)
+                    </td>
+                    <td data-th="@Html.DisplayNameFor(model => model.ModelNumber)">
+                        @Html.DisplayFor(modelItem => item.ModelNumber)
+                    </td>
+                    <td data-th="@Html.DisplayNameFor(model => model.SerialNumber)">
+                        @Html.DisplayFor(modelItem => item.SerialNumber)
+                    </td>
+                    <td data-th="@Html.DisplayNameFor(model => model.Value)">
+                        @Html.DisplayFor(modelItem => item.Value)
+                    </td>
+                    <td data-th="Action">
+                        @Html.ActionLink("Edit", "Edit", new { id = item.Id }) |
+                        @Html.ActionLink("Details", "Details", new { id = item.Id }) |
+                        @Html.ActionLink("Delete", "Delete", new { id = item.Id })
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+    <div class="text-center">
+        @Html.ActionLink("Home", "Index", "Home", new { area = "" }, new { @class = "btn btn-primary m-2" })
+        @Html.ActionLink("Manage Items", "Index", "Item", new { area = "" }, new { @class = "btn btn-primary m-2" })
+        @Html.ActionLink("Manage Borrowers", "Index", "Borrower", new { area = "" }, new { @class = "btn btn-primary m-2" })
+        @Html.ActionLink("Manage Transactions", "Index", "Transaction", new { area = "" }, new { @class = "btn btn-primary m-2" })
+        @Html.ActionLink("Manage Images", "Index", "ItemImage", new { area = "" }, new { @class = "btn btn-primary m-2" })
+    </div>
 </div>

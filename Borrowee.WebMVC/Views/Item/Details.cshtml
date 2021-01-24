@@ -4,65 +4,66 @@
     ViewBag.Title = "Item Details";
 }
 
-<h2>@ViewBag.Title</h2>
-
-<div>
-    <hr />
-    <dl class="dl-horizontal">
-        <dt>
-            @Html.DisplayNameFor(model => model.Name)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.Name)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.Description)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.Description)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.ModelNumber)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.ModelNumber)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.SerialNumber)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.SerialNumber)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.Value)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.Value)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.ItemImage)
-        </dt>
-
-        <dd>
+<div class="container">
+    <div class="row">
+        <div class="col">
+            <h2>@ViewBag.Title.</h2>
+        </div>
+    </div>
+</div>
+<hr />
+<div class="container">
+    <div class="row">
+        <div class="col-md-6">
+            <dl class="dl-horizontal">
+                <dt>
+                    @Html.DisplayNameFor(model => model.Name)
+                </dt>
+                <dd>
+                    @Html.DisplayFor(model => model.Name)
+                </dd>
+                <dt>
+                    @Html.DisplayNameFor(model => model.Description)
+                </dt>
+                <dd>
+                    @Html.DisplayFor(model => model.Description)
+                </dd>
+                <dt>
+                    @Html.DisplayNameFor(model => model.ModelNumber)
+                </dt>
+                <dd>
+                    @Html.DisplayFor(model => model.ModelNumber)
+                </dd>
+                <dt>
+                    @Html.DisplayNameFor(model => model.SerialNumber)
+                </dt>
+                <dd>
+                    @Html.DisplayFor(model => model.SerialNumber)
+                </dd>
+                <dt>
+                    @Html.DisplayNameFor(model => model.Value)
+                </dt>
+                <dd>
+                    @Html.DisplayFor(model => model.Value)
+                </dd>
+            </dl>
+        </div>
+        <div class="col-md-6">
             @if (Model.ItemImage != null)
             {
-                <img src="@(Url.Content(Constants.ItemImagePath) + @Html.DisplayFor(modelItem => Model.ItemImage.FileName))" />
+                <img src="@(Url.Content(Constants.ItemImagePath) + @Html.DisplayFor(modelItem => Model.ItemImage.FileName))" class="rounded-jt" />
             }
-        </dd>
-
-    </dl>
+        </div>
+    </div>
 </div>
-<p>
-    @Html.ActionLink("Edit", "Edit", new { id = Model.Id }) |
-    @Html.ActionLink("Back to List", "Index")
-</p>
+<br />
+<div class="container">
+    <div class="row">
+        <div class="col">
+            <p>
+                @Html.ActionLink("Edit", "Edit", new { id = Model.Id }) |
+                @Html.ActionLink("Back to List", "Index")
+            </p>
+        </div>
+    </div>
+</div>

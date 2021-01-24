@@ -4,59 +4,67 @@
     ViewBag.Title = "Transaction Details";
 }
 
-<h2>@ViewBag.Title</h2>
-
-<div>
-    <hr />
-    <dl class="dl-horizontal">
-        <dt>
-            @Html.DisplayNameFor(model => model.Item)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.Item.Name)
+<div class="container">
+    <div class="row">
+        <div class="col">
+            <h2>@ViewBag.Title.</h2>
+        </div>
+    </div>
+</div>
+<hr />
+<div class="container">
+    <div class="row">
+        <div class="col-md-6">
+            <dl class="dl-horizontal">
+                <dt>
+                    @Html.DisplayNameFor(model => model.Item)
+                </dt>
+                <dd>
+                    @Html.DisplayFor(model => model.Item.Name)
+                </dd>
+                <dt>
+                    @Html.DisplayNameFor(model => model.Borrower)
+                </dt>
+                <dd>
+                    @Html.DisplayFor(model => model.Borrower.FirstName)
+                    @Html.DisplayFor(model => model.Borrower.LastName)
+                </dd>
+                <dt>
+                    @Html.DisplayNameFor(model => model.LentOutDateUtc)
+                </dt>
+                <dd>
+                    @Html.DisplayFor(model => model.LentOutDateUtc)
+                </dd>
+                <dt>
+                    @Html.DisplayNameFor(model => model.ReturnDateUtc)
+                </dt>
+                <dd>
+                    @Html.DisplayFor(model => model.ReturnDateUtc)
+                </dd>
+                <dt>
+                    @Html.DisplayNameFor(model => model.IsReturned)
+                </dt>
+                <dd>
+                    @Html.DisplayFor(model => model.IsReturned)
+                </dd>
+            </dl>
+        </div>
+        <div class="col-md-6">
             @if (Model.ItemImage != null)
             {
-                <br><img src="@(Url.Content(Constants.ItemImagePath) + @Html.DisplayFor(model => model.ItemImage.FileName))" />
+                <img src="@(Url.Content(Constants.ItemImagePath) + @Html.DisplayFor(model => model.ItemImage.FileName))" class="rounded-jt" />
             }
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.Borrower)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.Borrower.FirstName)
-            @Html.DisplayFor(model => model.Borrower.LastName)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.LentOutDateUtc)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.LentOutDateUtc)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.ReturnDateUtc)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.ReturnDateUtc)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.IsReturned)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.IsReturned)
-        </dd>
-
-    </dl>
+        </div>
+    </div>
 </div>
-<p>
-    @Html.ActionLink("Edit", "Edit", new { id = Model.Id }) |
-    @Html.ActionLink("Back to List", "Index")
-</p>
+<br />
+<div class="container">
+    <div class="row">
+        <div class="col">
+            <p>
+                @Html.ActionLink("Edit", "Edit", new { id = Model.Id }) |
+                @Html.ActionLink("Back to List", "Index")
+            </p>
+        </div>
+    </div>
+</div>
