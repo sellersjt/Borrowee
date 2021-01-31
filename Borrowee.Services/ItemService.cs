@@ -10,7 +10,7 @@ using System.Threading.Tasks;
 
 namespace Borrowee.Services
 {
-    public class ItemService
+    public class ItemService : IItemService
     {
         private readonly Guid _userId;
 

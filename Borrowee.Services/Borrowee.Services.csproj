@@ -68,6 +68,10 @@
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\Borrowee.Contracts\Borrowee.Contracts.csproj">
+      <Project>{d9ae5a48-8130-4e66-bcda-a86cb02c25a7}</Project>
+      <Name>Borrowee.Contracts</Name>
+    </ProjectReference>
     <ProjectReference Include="..\Borrowee.Data\Borrowee.Data.csproj">
       <Project>{85322f80-6a5c-48cd-b867-50157937f87e}</Project>
       <Name>Borrowee.Data</Name>
