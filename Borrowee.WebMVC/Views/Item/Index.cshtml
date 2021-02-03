@@ -75,9 +75,12 @@
                         @Html.DisplayFor(modelItem => item.Value)
                     </td>
                     <td data-th="Action">
-                        @Html.ActionLink("Edit", "Edit", new { id = item.Id }) |
-                        @Html.ActionLink("Details", "Details", new { id = item.Id }) |
-                        @Html.ActionLink("Delete", "Delete", new { id = item.Id })
+                        @*@Html.ActionLink("Edit", "Edit", new { id = item.Id }) |*@
+                        @*@Html.ActionLink("Details", "Details", new { id = item.Id }) |*@
+                        @*@Html.ActionLink("Delete", "Delete", new { id = item.Id })*@
+                        <a href="/Item/Edit/@item.Id"><i class="fa fa-pencil-square-o fa-lg fa-fw" aria-hidden="true" tooltip-toggle="tooltip" data-placement="top" title="Edit"></i></a>
+                        <a href="/Item/Details/@item.Id"><i class="fa fa-file-text-o fa-lg fa-fw" aria-hidden="true" tooltip-toggle="tooltip" data-placement="top" title="Details"></i></a>
+                        <a href="/Item/Delete/@item.Id"><i class="fa fa-trash-o fa-lg fa-fw" aria-hidden="true" tooltip-toggle="tooltip" data-placement="top" title="Delete"></i></a>
                     </td>
                 </tr>
             }
@@ -91,3 +94,10 @@
         @Html.ActionLink("Manage Images", "Index", "ItemImage", new { area = "" }, new { @class = "btn btn-primary m-2" })
     </div>
 </div>
+@section scripts {
+    <script language="javascript" type="text/javascript">
+        $(document).ready(function () {
+            $('[tooltip-toggle="tooltip"]').tooltip();
+        });
+    </script>
+}
